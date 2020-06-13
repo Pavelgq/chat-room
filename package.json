@@ -1,0 +1,27 @@
+{
+  "name": "chat-room",
+  "version": "1.0.0",
+  "description": "chat on web-socket",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pavelgq/chat-room.git"
+  },
+  "keywords": [
+    "web-socket"
+  ],
+  "author": "Pavel Gordeev (pavelgq@yandex.ru)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pavelgq/chat-room/issues"
+  },
+  "homepage": "https://github.com/Pavelgq/chat-room#readme",
+  "dependencies": {
+    "node-static": "^0.7.11",
+    "ws": "^7.3.0"
+  }
+}
