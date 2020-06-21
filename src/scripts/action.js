@@ -19,5 +19,5 @@ socket.onmessage = function(event) {
 function showMessage(message) {
   var messageElem = document.createElement('div');
   messageElem.appendChild(document.createTextNode(message));
-  document.getElementById('subscribe').appendChild(messageElem);
+  document.getElementById('room__field').appendChild(messageElem);
 }

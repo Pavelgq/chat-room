@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat room</title>
+</head>
+
+<body>
+
+    <div class="container container--main">
+        <div class="wrapper--vertical">
+            <header class="header">
+                <h1 class="visually-hidden">Комната для общения</h1>
+                <section class="header__logo logo">
+                    <span class="logo__title">Chat</span>
+                    <span class="logo__subtitle">Room</span>
+                </section>
+                <section class="header__user user">
+                    <div class="user__photo">
+                        <img class="user__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" srcset="">
+                    </div>
+                    <p class="user__info">
+                        <span class="user__name">Павел</span>
+                        <span class="user__status">online</span>
+                    </p>
+                    
+                </section>
+            </header>
+
+            <main class="chat">
+                <section class="chat__conected">
+                    <h2 class="visually-hidden">Пользователи</h2>
+                    <div class="chat__user user">
+                        <div class="user__photo">
+                            <img class="user__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" srcset="">
+                        </div>
+                        <p class="user__info">
+                            <span class="user__name">Павел</span>
+                            <span class="user__status">online</span>
+                        </p>
+                    </div>
+                </section>
+                <section class="chat__room room">
+                    <h2 class="visually-hidden">Сообщения в чате</h2>
+                    <div class="room__field">
+
+                    </div>
+                    <div class="room__enter">
+                        <form name="publish" class="room__form">
+                            <input class="room__message" type="text" name="massage" id="massage" placeholder="Введите сообщение...">
+                            <button class="room__send" type="submit"><span class="visually-hidden">Отправить сообщение</span> </button>
+                        </form>
+                    </div>
+                </section>
+            </main>
+
+        </div>
+    </div>
+    <section class="modal registation visually-hidden">
+        <form class="registation__form">
+            <label for="" class="registration__label">Никнейм</label>
+            <input type="text" class="registration__name">
+        </form>
+    </section>
+
+    <div id="subscribe"></div>
+    <script src="action.js"></script>
+</body>
+
+</html>
