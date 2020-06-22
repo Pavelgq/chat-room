@@ -1,12 +1,13 @@
 .chat {
     display: flex;
-    height: 100%;
+    height: calc(800px - 118px);
     &__conected {
-        border: 1px solid black;
-
+        background: #FAFBFF;
+        border-right: 1px solid  rgba(112, 124, 151, 0.1);
         box-sizing: border-box;
         width: 25%;
         height: 100%;
+        overflow-y: scroll;
     }
 
     &__user {
@@ -17,8 +18,6 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-
-        border: 1px solid black;
 
         flex-grow: 1;   
     }
