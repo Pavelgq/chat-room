@@ -1,2 +1,7 @@
 import './less/style.less';
-import './scripts/action.js'
+import './scripts/app.js'
+
+
+/**
+ * Точка входа
+ */

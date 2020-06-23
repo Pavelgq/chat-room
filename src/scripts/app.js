@@ -21,3 +21,13 @@ function showMessage(message) {
   messageElem.appendChild(document.createTextNode(message));
   document.getElementById('room__field').appendChild(messageElem);
 }
+
+
+let app = {
+  init: function() {
+    var socket = new WebSocket("ws://localhost:8081");
+    
+  } ,
+  main: '',
+  events: ''
+}
