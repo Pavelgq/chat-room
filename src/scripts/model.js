@@ -1,10 +1,7 @@
-
+import Message from './message.js'
 export default class Model {
     constructor () {
-        this.massages = [{
-            author: '',
-            text: ''
-        }]
+        this.messages = [];
     }
 
     newUser() {
@@ -17,10 +14,10 @@ export default class Model {
     }
 
     getMassage() {
-
+        return this.messages
     }
 
-    addMessage(massage) {
-        this.massages
+    addMessage(message) {
+        this.messages.push(message);
     }
 }

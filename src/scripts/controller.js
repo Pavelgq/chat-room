@@ -1,3 +1,6 @@
+import Model from "./model.js"
+import View from "./view.js"
+
 export default class Controller {
     constructor(model, view) {
         this.model = model || new Model();
@@ -5,23 +8,25 @@ export default class Controller {
     }
 
     init() {
-        let socket = new WebSocket("ws://localhost:8081");
+        this.socket = new WebSocket("ws://localhost:8081");
 
         // отправить сообщение из формы publish
-        document.forms.publish.onsubmit = function () {
-            let outgoingMessage = this.message.value;
+        // document.forms.publish.onsubmit = function () {
+        //     let outgoingMessage = this.message.value;
 
-            socket.send(outgoingMessage);
-            return false;
-        };
+        //     socket.send(outgoingMessage);
+        //     return false;
+        // };
 
         // обработчик входящих сообщений
-        socket.onmessage = function (event) {
-            let incomingMessage = event.data;
-            model.addMessage(incomingMessage);
-            console.log(model);
-            view.showMessage(incomingMessage);
-        };
+        this.socket.onmessage = this.newMessage.bind(this);
+    }
+
+    newMessage(event) {
+        let incomingMessage = event.data;
+        this.model.addMessage(incomingMessage);
+        console.log(this.model);
+        this.view.showMessage(incomingMessage);
     }
 
     connectElements(selector, event) {
@@ -37,6 +42,9 @@ export default class Controller {
             case 'login':
                 break;
             case 'send':
+                let outgoingMessage = document.querySelector(".room__message").value;
+                this.socket.send(outgoingMessage);
+                return false;
                 break;
             default:
                 break;

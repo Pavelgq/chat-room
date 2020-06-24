@@ -1,4 +1,4 @@
-export default class View() {
+export default class View {
     constructor (model) {
        this.model = model;
     }
@@ -18,7 +18,7 @@ export default class View() {
     showMessage(message) {
         let messageElem = document.createElement('div');
         messageElem.appendChild(document.createTextNode(message));
-        document.getElementById('room__field').appendChild(messageElem);
+        document.querySelector('.room__field').appendChild(messageElem);
       }
 
 }

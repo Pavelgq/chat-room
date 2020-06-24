@@ -1,33 +1,7 @@
-// создать подключение
-var socket = new WebSocket("ws://localhost:8081");
+import Controller from "./controller.js"
 
-// отправить сообщение из формы publish
-document.forms.publish.onsubmit = function() {
-  var outgoingMessage = this.message.value;
+const controller = new Controller();
 
-  socket.send(outgoingMessage);
-  return false;
-};
+controller.init();
 
-// обработчик входящих сообщений
-socket.onmessage = function(event) {
-  var incomingMessage = event.data;
-  showMessage(incomingMessage);
-};
-
-// показать сообщение в div#subscribe
-function showMessage(message) {
-  var messageElem = document.createElement('div');
-  messageElem.appendChild(document.createTextNode(message));
-  document.getElementById('room__field').appendChild(messageElem);
-}
-
-
-let app = {
-  init: function() {
-    var socket = new WebSocket("ws://localhost:8081");
-    
-  } ,
-  main: '',
-  events: ''
-}
+controller.connectElements(".room__send", 'click');
