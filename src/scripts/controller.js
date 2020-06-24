@@ -9,7 +9,7 @@ export default class Controller {
 
     init() {
         this.socket = new WebSocket("ws://localhost:8081");
-
+        console.log(this.socket);
         // отправить сообщение из формы publish
         // document.forms.publish.onsubmit = function () {
         //     let outgoingMessage = this.message.value;
@@ -23,10 +23,11 @@ export default class Controller {
     }
 
     newMessage(event) {
-        let incomingMessage = event.data;
-        this.model.addMessage(incomingMessage);
+        console.log(event.data);
+        let pack = JSON.parse(event.data);
+        this.model.addMessage(pack);
         console.log(this.model);
-        this.view.showMessage(incomingMessage);
+        this.view.showMessage(pack);
     }
 
     connectElements(selector, event) {
