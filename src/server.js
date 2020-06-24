@@ -2,17 +2,21 @@ const http = require('http');
 const Static = require('node-static');
 const express = require('express');
 const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
 
-
-const POST = process.env.POST || 3000;
+const PORT = process.env.PORT || 3000;
+const uri = "mongodb+srv://pavel:5430027@cluster0-c10cy.mongodb.net/chat-room?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const app = express();
 
+let db;
+
+console.log(PORT)
 async function start() {
   try {
-    await mongoose.connect('mongodb+srv://pavel:5430027@cluster0-c10cy.mongodb.net/chat-data?retryWrites=true&w=majority', {
-      useNewUrlParser: true,
-      useFindAndModify: false
-    })
+    await client.connect((err, database) => {
+      db = database;
+    });
 
     app.listen(PORT, () => {
       console.log('Server started...');
@@ -22,7 +26,14 @@ async function start() {
   }
 }
 
-start(); 
+
+
+
+
+
+
+
+start();
 
 
 var WebSocketServer = new require('ws');
@@ -35,16 +46,16 @@ var webSocketServer = new WebSocketServer.Server({
   port: 8081
 });
 
-webSocketServer.on('connection', function(ws) {
+webSocketServer.on('connection', function (ws) {
 
   var id = Math.random();
   clients[id] = ws;
-  
+
   console.log("новое соединение " + id);
 
   //TODO: Регистрация пользователя перед открытием сокета
 
-  ws.on('message', function(message) {
+  ws.on('message', function (message) {
     console.log('получено сообщение ' + message);
     let pack = {
       userId: id,
@@ -55,9 +66,9 @@ webSocketServer.on('connection', function(ws) {
     }
   });
 
-  ws.on('close', function() {
+  ws.on('close', function () {
     delete clients[id];
-    
+
     console.log('соединение закрыто ' + id);
 
 

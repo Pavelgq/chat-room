@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev server": "nodemon server.js",
     "run server": "node server.js",
-    "dev": "webpack --mode development",
+    "dev": "webpack --mode development --host 127.0.0.1",
     "build": "webpack --mode production",
     "watch": "webpack --mode development --watch",
     "start": "webpack-dev-server --mode development --open"
@@ -18,7 +19,7 @@
   "keywords": [
     "web-socket"
   ],
-  "author": "Pavel Gordeev (pavelgq@yandex.ru)",
+  "author": "Pavel Gordeev <pavelgq@yandex.ru>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Pavelgq/chat-room/issues"
@@ -35,14 +36,17 @@
     "html-webpack-plugin": "^4.3.0",
     "less-loader": "^6.0.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "nodemon": "^2.0.4",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "lodash": "^4.17.15",
+    "mongoose": "^5.9.20",
     "node-static": "^0.7.11",
     "normalize.css": "^8.0.1",
     "ws": "^7.3.0"
