@@ -2,17 +2,22 @@ const http = require('http');
 const Static = require('node-static');
 const express = require('express');
 const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
 
-
-const POST = process.env.POST || 3000;
+const PORT = process.env.PORT || 3000;
+const uri = "mongodb+srv://pavel:5430027@cluster0-c10cy.mongodb.net/chat-room?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const app = express();
 
+let db;
+
+console.log(PORT);
 async function start() {
   try {
-    await mongoose.connect('mongodb+srv://pavel:5430027@cluster0-c10cy.mongodb.net/chat-data?retryWrites=true&w=majority', {
-      useNewUrlParser: true,
-      useFindAndModify: false
-    })
+    await client.connect((err, database) => {
+      db = database;
+      console.log(database);
+    });
 
     app.listen(PORT, () => {
       console.log('Server started...');
@@ -21,6 +26,8 @@ async function start() {
     console.error(error);
   }
 }
+
+
 
 start(); 
 
