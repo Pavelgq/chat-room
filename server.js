@@ -11,7 +11,6 @@ const app = express();
 
 let db;
 
-console.log(PORT);
 async function start() {
   try {
     await client.connect((err, database) => {
