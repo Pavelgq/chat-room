@@ -1,30 +1,4 @@
-const http = require('http');
-const Static = require('node-static');
-const express = require('express');
-const mongoose = require('mongoose');
-const MongoClient = require('mongodb').MongoClient;
 
-const PORT = process.env.PORT || 3000;
-
-
-const app = express();
-
-let db;
-
-async function start() {
-  try {
-
-    app.listen(PORT, () => {
-      console.log('Server started...');
-    });
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-
-
-start();
 
 
 var WebSocketServer = new require('ws');
@@ -72,3 +46,4 @@ webSocketServer.on('connection', function (ws) {
   });
 
 });
+

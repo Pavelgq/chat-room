@@ -1,0 +1,59 @@
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"error","message":"Failed to connect to MongoDB Cannot read property 'db' of undefined","stack":"TypeError: Cannot read property 'db' of undefined\n    at module.exports.MongoClient.connect.then.then (c:\\webProjects\\demo\\chat-room\\server\\database\\database.js:11:25)\n    at process._tickCallback (internal/process/next_tick.js:68:7)"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
