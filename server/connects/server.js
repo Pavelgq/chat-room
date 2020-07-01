@@ -31,9 +31,13 @@ const userStore = require(`../chat/store`);
 // const imageStore = require(`./images/store`);
 const userRouter = require(`../chat/route`)(userStore);// imageStore);
 const logger = require(`../logger`);
+var bodyParser = require('body-parser');
 
 const app = express();
+
 app.use(express.static(`static`));
+
+app.use(bodyParser.json())
 
 app.use(`/api/user`, userRouter);
 

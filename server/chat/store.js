@@ -1,15 +1,18 @@
 const db = require('../database/database');
+const logger = require(`../logger`);
 
+console.log(db);    
 const setupCollection = async () => {
     const dBase = await db;
-
-    const collection = dBase.collection('user');
+    console.log(dBase);
+    const collection = dBase.collection(`users`);
+    console.log(collection);
     collection.createIndex({
         userid: 1
     }, {
         unique: true
     });
-
+    
     return collection;
 }
 
@@ -29,4 +32,4 @@ class UserStore {
     }
 }
 
-module.exports = new UserStore(setupCollection().catch((e) => logger.error(`Failed to set up "wizards"-collection`, e)));
+module.exports = new UserStore(setupCollection().catch((e) => logger.error(`Failed to set up "users"-collection`, e)));

@@ -34,7 +34,7 @@ chatRouter.get(``, async(async (req, res) => {
 
 chatRouter.post(``, async(async (req, res) => {
     const data = await req.body; //Почему дата undef???
-    console.log(data, req);
+    console.log(data);
     logger.info(`Received data from user: `, data);
     // res.send((req));
       
