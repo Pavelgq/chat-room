@@ -4,11 +4,9 @@ const logger = require(`../logger`);
 console.log(db);    
 const setupCollection = async () => {
     const dBase = await db;
-    console.log(dBase);
-    const collection = dBase.collection(`users`);
-    console.log(collection);
+    const collection = dBase.collection(`messages`);
     collection.createIndex({
-        userid: 1
+        messageid: 1
     }, {
         unique: true
     });
@@ -16,13 +14,13 @@ const setupCollection = async () => {
     return collection;
 }
 
-class UserStore {
+class MessageStore {
     constructor(collection) {
         this.collection = collection;
     }
 
-    async getUser() {
-        return (await this.collection).findOne({
+    async getUserMessage(userid, buf = 10) {
+        return (await this.collection).find({
             userid
         });
     }
@@ -32,4 +30,4 @@ class UserStore {
     }
 }
 
-module.exports = new UserStore(setupCollection().catch((e) => logger.error(`Failed to set up "users"-collection`, e)));
+module.exports = new MessageStore(setupCollection().catch((e) => logger.error(`Failed to set up "message"-collection`, e)));

@@ -98,3 +98,32 @@
 {"level":"error","message":"Failed to connect to MongoDB Cannot read property 'db' of undefined","stack":"TypeError: Cannot read property 'db' of undefined\n    at c:\\Users\\Pavel\\Documents\\chat-room\\server\\database\\database.js:25:24\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)\n    at async setupCollection (c:\\Users\\Pavel\\Documents\\chat-room\\server\\chat\\store.js:6:19)"}
 {"message":"Server running at http://localhost:3000/","level":"info"}
 {"level":"error","message":"Failed to set up \"users\"-collection Cannot read property 'collection' of undefined","stack":"TypeError: Cannot read property 'collection' of undefined\n    at setupCollection (c:\\Users\\Pavel\\Documents\\chat-room\\server\\chat\\store.js:8:30)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"Pavel","login":"PavelGQ","pass":"123","level":"info","message":"Received data from user: "}
+{"messageid":"1","userid":"1","text":"Привет","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"messageid":"1","userid":"1","text":"Привет","level":"info","message":"Received data from user: "}
+{"name":"MongoServerSelectionError","reason":{"type":"ReplicaSetNoPrimary","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":null},"level":"error","message":"Failed to connect to MongoDB Authentication failed.","stack":"MongoServerSelectionError: Authentication failed.\n    at Timeout.waitQueueMember.timer.setTimeout [as _onTimeout] (c:\\webProjects\\demo\\chat-room\\node_modules\\mongodb\\lib\\core\\sdam\\topology.js:430:30)\n    at ontimeout (timers.js:436:11)\n    at tryOnTimeout (timers.js:300:5)\n    at listOnTimeout (timers.js:263:5)\n    at Timer.processTimers (timers.js:223:10)"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"messageid":"1","userid":"1","text":"Привет","level":"info","message":"Received data from user: "}
+{"name":"Pavel","login":"PavelGQ","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"Pavel1","login":"PavelGQ","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"aPavel1","login":"PavelGQ","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"aPavel1","login":"aPavelGQ","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"aPavel1","login":"aPavelGQ","pass":"1123","level":"info","message":"Received data from user: "}
+{"name":"a1Pavel1","login":"a1PavelGQ","pass":"11123","level":"info","message":"Received data from user: "}
+{"name":"aaaa","login":"vaaa","pass":"11213","level":"info","message":"Received data from user: "}
+{"1name":"aaaa","l1ogin":"vaaa","p1ass":"11213","level":"info","message":"Received data from user: "}
+{"name":"aaaa","login":"vaaa","pass":"11213","level":"info","message":"Received data from user: "}
+{"messageid":"1","userid":"1","text":"Привет","level":"info","message":"Received data from user: "}
+{"messageid":"2","userid":"2","text":"Привет","level":"info","message":"Received data from user: "}
+{"name":"aaaa1","login":"vaaa2","pass":"11213","level":"info","message":"Received data from user: "}
+{"name":"aaaa1","login":"vaaa2","pass":"11213","level":"info","message":"Received data from user: "}
+{"name":"234234","login":"3432234","pass":"3433","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"234234","login":"3432234","pass":"3433","level":"info","message":"Received data from user: "}
+{"name":"234234","login":"3432234","pass":"3433","level":"info","message":"Received data from user: "}
+{"messageid":"2","userid":"2","text":"Привет","level":"info","message":"Received data from user: "}
+{"messageid":"3","userid":"2","text":"Привет","level":"info","message":"Received data from user: "}
+{"name":"Pavel1","login":"3432234","pass":"3433","level":"info","message":"Received data from user: "}

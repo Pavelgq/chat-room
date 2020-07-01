@@ -1,35 +1,9 @@
-// const http = require('http');
-// const Static = require('node-static');
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const MongoClient = require('mongodb').MongoClient;
-
-// const PORT = process.env.PORT || 3000;
-
-
-// const app = express();
-
-// let db;
-
-// async function start() {
-//   try {
-
-//     app.listen(PORT, () => {
-//       console.log('Server started...');
-//     });
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-
-
-// start();
-
 const express = require(`express`);
-const userStore = require(`../chat/store`);
+const userStore = require(`../chat/userStore`);
+const messageStore = require(`../chat/messageStore`);
 // const imageStore = require(`./images/store`);
-const userRouter = require(`../chat/route`)(userStore);// imageStore);
+const userRouter = require(`../chat/userRoute`)(userStore);// imageStore);
+const messageRouter = require(`../chat/messageRoute`)(messageStore);// imageStore);
 const logger = require(`../logger`);
 var bodyParser = require('body-parser');
 
@@ -40,6 +14,7 @@ app.use(express.static(`static`));
 app.use(bodyParser.json())
 
 app.use(`/api/user`, userRouter);
+app.use(`/api/message`, messageRouter);
 
 // app.use(`/`, function (req, res, next) {
 //   console.log(req.method);
