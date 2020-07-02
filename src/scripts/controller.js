@@ -31,16 +31,18 @@ export default class Controller {
     }
 
     connectElements(selector, event) {
-        let els = document.querySelectorAll(selector);
-        for (let el of els)
-            el.addEventListener(event, e => this.eventHandler(e));
+        let elements = document.querySelectorAll(selector);
+        for (let element of elements)
+            element.addEventListener(event, e => this.eventHandler(e));
     }
 
-    eventHandler(e) {
+    eventHandler(event) {
         switch (event.target.dataset.index) {
-            case 'auth':
+            case 'registration':
+                this.view.registration(event);
                 break;
             case 'login':
+                this.view.login(event);
                 break;
             case 'send':
                 let outgoingMessage = document.querySelector(".room__message").value;

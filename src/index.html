@@ -194,8 +194,8 @@
     <section class="modal login" id="modal__action">
         <form action="" class="login__form">
             <fieldset class="login__field">
-                <button class="login__button button">Регистрация</button>
-                <button class="login__button button">Вход</button>
+                <button type="button" class="login__button button" data-index="registration">Регистрация</button>
+                <button type="button" class="login__button button" data-index="login">Вход</button>
             </fieldset>
         </form>
     </section>
@@ -209,6 +209,8 @@
                 <input type="password" class="login__input">
 
                 <button class="login__button button" type="submit">Войти</button>
+
+                <p>Или все таки <a  href="#" class="login__button" data-index="registration">зарегистрироваться</a>?</p>
             </fieldset>
         </form>
     </section>
@@ -226,6 +228,7 @@
                 <img class="user__avatar post__avatar" src="#" id="upload-img" alt="image" />
 
                 <button class="login__button button" type="submit">Регистрация</button>
+                <p>Может уже есть аккаунт, чтобы <a class="login__button" href="#" data-index="login">войти</a>?</p>
             </fieldset>
         </form>
     </section>

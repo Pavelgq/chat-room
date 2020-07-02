@@ -29,18 +29,20 @@ export default class View {
     document.querySelector('.room__field').appendChild(messageElem);
   }
 
-  registration() {
-    const modal = document.getElementById("modal__action");
-    modal.classList.add("vissualy-hidden");
-    
+  registration(event) {
+    const modal = event.target.closest(".modal");
+    modal.classList.toggle("visually-hidden");
+
     const registration = document.getElementById("modal__registration");
-    registration.classList.remove("vissualy-hidden")
-
-
+    registration.classList.remove("visually-hidden");
   }
 
-  login() {
+  login(event) {
+    const modal = event.target.closest(".modal");
+    modal.classList.toggle("visually-hidden");
 
+    const login = document.getElementById("modal__login");
+    login.classList.remove("visually-hidden");
   }
 
 }
