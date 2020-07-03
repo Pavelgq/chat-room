@@ -62,6 +62,7 @@ module.exports = {
   renderDataError: (req, res, data) => render(req, res, data, false),
   renderException: (req, res, exception) => {
     let data = exception;
+    console.log(data);
     if (exception instanceof ValidationError) {
       data = exception.errors;
     } else if (exception instanceof MongoError) {

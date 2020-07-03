@@ -31,26 +31,54 @@ export default class Controller {
     }
 
     connectElements(selector, event) {
-        let els = document.querySelectorAll(selector);
-        for (let el of els)
-            el.addEventListener(event, e => this.eventHandler(e));
+        let elements = document.querySelectorAll(selector);
+        for (let element of elements)
+            element.addEventListener(event, e => this.eventHandler(e));
     }
 
-    eventHandler(e) {
+    eventHandler(event) {
         switch (event.target.dataset.index) {
-            case 'auth':
+            case 'registration':
+                this.view.registration(event);
                 break;
             case 'login':
+                this.view.login(event);
                 break;
             case 'send':
                 let outgoingMessage = document.querySelector(".room__message").value;
                 this.socket.send(outgoingMessage);
                 return false;
                 break;
+            case 'reg-data':
+                let data = {
+                    name: document.getElementById('newName').value,
+                    login: document.getElementById('newLogin').value,
+                    pass: document.getElementById('newPass').value
+                }
+                let type = 'user';
+                this.responseOnServer(type, JSON.stringify(data));
+                break;
+            case 'login-data':
+
+                break;
             default:
                 break;
         }
+    }
 
+    async responseOnServer(type, data) {
+        let url = `http://localhost:3000/api/${type}`;
+        let response = await fetch(url, {
+            mode: 'no-cors',
+            method: 'POST',
+            headers: {
+                // 'Access-Control-Request-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(data)
+        });
+        let req = await response.json();
 
+        return req;
     }
 }

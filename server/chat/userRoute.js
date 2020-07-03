@@ -6,10 +6,7 @@ const logger = require(`../logger`);
 
 const chatRouter = new Router();
 
-let data = {
-    userid: 123,
-    name: 'Pavel'
-}
+
 
 const toPage = async (cursor, skip = 0, limit = 20) => {
     return {
@@ -28,16 +25,16 @@ chatRouter.use((req, res, next) => {
 
 
 chatRouter.get(``, async(async (req, res) => {
+    const data = await req.body; 
     console.log(req.method, data);
     res.send(await data);
 }));
 
 chatRouter.post(``, async(async (req, res) => {
-    const data = await req.body; //Почему дата undef???
-    console.log(data);
+    const data = await req.body; 
     logger.info(`Received data from user: `, data);
-    // res.send((req));
-      
+   
+    
     await chatRouter.userStore.save(data);
     dataRenderer.renderDataSuccess(req, res, data);
   }));
