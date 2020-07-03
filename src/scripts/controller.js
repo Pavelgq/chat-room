@@ -49,10 +49,48 @@ export default class Controller {
                 this.socket.send(outgoingMessage);
                 return false;
                 break;
+            case 'reg-data':
+                event.preventDefault();
+                let data = {
+                    name: document.getElementById('newName').value,
+                    login: document.getElementById('newLogin').value,
+                    pass: document.getElementById('newPass').value
+                }
+                let type = 'user';
+                this.responseOnServer(type, data);
+                break;
+            case 'login-data':
+
+                break;
             default:
                 break;
         }
+    }
 
+    async responseOnServer(type, data) {
+        let req;
 
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify(data);
+
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+        
+        let url = `http://localhost:3000/api/${type}`;
+        let response = await fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            req = result;
+            console.log(result);
+        } )
+        .catch(error => console.log('error', error));
+
+        return req;
     }
 }

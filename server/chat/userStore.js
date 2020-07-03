@@ -6,7 +6,7 @@ const setupCollection = async () => {
     const dBase = await db;
     const collection = dBase.collection(`users`);
     collection.createIndex({
-        userid: -1
+        login: 1
     }, {
         unique: true
     });
@@ -21,7 +21,7 @@ class UserStore {
 
     async getUser() {
         return (await this.collection).findOne({
-            userid
+            login
         });
     }
 

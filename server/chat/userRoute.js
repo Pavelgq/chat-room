@@ -20,12 +20,13 @@ const toPage = async (cursor, skip = 0, limit = 20) => {
 chatRouter.use((req, res, next) => {
     res.header(`Access-Control-Allow-Origin`, `*`);
     res.header(`Access-Control-Allow-Headers`, `Origin, X-Requested-With, Content-Type, Accept`);
+    res.header('Content-Type', 'application/json')
     next();
 });
 
 
 chatRouter.get(``, async(async (req, res) => {
-    console.log(req.method, data);
+    const data = await req.body; 
     res.send(await data);
 }));
 

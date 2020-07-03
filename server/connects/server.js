@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.static(`static`));
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.use(`/api/user`, userRouter);
 app.use(`/api/message`, messageRouter);
