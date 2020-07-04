@@ -3,18 +3,6 @@ export default class View {
     this.model = model;
   }
 
-  // authorization() {
-  //         /**
-  //          * Открываю модальное окно и подписываюсь на события кнопок
-  //          */
-  // }
-
-  // createUser() {
-  //     /**
-  //      * Добавляю пользователя, обновляю модель?? через контроллер??
-  //      */
-  // }
-
   showMessage(pack) {
     let messageElem = document.createElement("DIV");
     messageElem.setAttribute('class', 'room__post post');
@@ -45,4 +33,27 @@ export default class View {
     login.classList.remove("visually-hidden");
   }
 
+  run() {
+    const modal = document.querySelectorAll(".modal");
+    modal.forEach(element => {
+      element.classList.add("visually-hidden");
+    });
+    
+    const header = document.querySelector(".header__user");
+    const nameContainer = header.querySelector(".user__name");
+    nameContainer.innerText = `${this.model.user.name} <${this.model.user.login}>`;
+  }
+
+  newUser(data) {
+    const container = document.querySelector(".chat__conected");
+    const template = `<div class="chat__user user">
+      <div class="user__photo">
+          <img class="user__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" srcset="">
+      </div>
+      <p class="user__info">
+          <span class="user__name">${data.name} <${data.login}></span>
+          <span class="user__status">online</span>
+      </p>
+    </div>`;
+  }
 }

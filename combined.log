@@ -56,3 +56,16 @@
 {"name":"w","login":"w121`","pass":"wdwd","level":"info","message":"Received data from user: "}
 {"name":"Павел","login":"Bore","pass":"123","level":"info","message":"Received data from user: "}
 {"name":"Павел","login":"Bore","pass":"123","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"MongoServerSelectionError","reason":{"type":"ReplicaSetNoPrimary","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":null},"level":"error","message":"Failed to connect to MongoDB connection <monitor> to 3.121.53.9:27017 closed","stack":"MongoServerSelectionError: connection <monitor> to 3.121.53.9:27017 closed\n    at Timeout._onTimeout (c:\\Users\\Pavel\\Documents\\chat-room\\node_modules\\mongodb\\lib\\core\\sdam\\topology.js:430:30)\n    at listOnTimeout (internal/timers.js:549:17)\n    at processTimers (internal/timers.js:492:7)"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"Павел","login":"gordeevzeu@yandex.ru","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"Павел","login":"gordeevzeu@yandex.ru","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"Павел","login":"gordeevzeu@yandex.ru","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"Павел1","login":"pavelgq","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"Павел1","login":"pavelgq1","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"АО \"ЗЭУ\"","login":"demo","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"АО \"ЗЭУ\"","login":"demo","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"АО \"ЗЭУ\"","login":"demo1","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"12312312","login":"123123123","pass":"12312","level":"info","message":"Received data from user: "}
+{"name":"12312312","login":"12312312333","pass":"12312","level":"info","message":"Received data from user: "}

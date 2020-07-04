@@ -5,6 +5,9 @@ export default class Controller {
     constructor(model, view) {
         this.model = model || new Model();
         this.view = view || new View(this.model);
+
+        this.eventHandler = this.eventHandler.bind(this);
+        this.newUser = this.newUser.bind(this);
     }
 
     init() {
@@ -20,6 +23,7 @@ export default class Controller {
 
         // обработчик входящих сообщений
         this.socket.onmessage = this.newMessage.bind(this);
+        
     }
 
     newMessage(event) {
@@ -57,7 +61,8 @@ export default class Controller {
                     pass: document.getElementById('newPass').value
                 }
                 let type = 'user';
-                this.responseOnServer(type, data);
+                let req = this.responseOnServer(type, data, this.newUser);
+                
                 break;
             case 'login-data':
 
@@ -67,7 +72,7 @@ export default class Controller {
         }
     }
 
-    async responseOnServer(type, data) {
+    async responseOnServer(type, data, action) {
         let req;
 
         var myHeaders = new Headers();
@@ -86,11 +91,29 @@ export default class Controller {
         let response = await fetch(url, requestOptions)
         .then(response => response.text())
         .then(result => {
-            req = result;
+            req = JSON.parse(result);
             console.log(result);
+            action(req);
         } )
         .catch(error => console.log('error', error));
 
         return req;
+    }
+
+
+    saveCookie() {
+        if (this.model.user) {
+            document.cookie = `userId = ${this.model.user.id}`;
+        }
+    }
+
+    newUser(data) {
+        this.model.newUser(data);
+        this.saveCookie();
+        this.view.run();
+    }
+
+    newMessage() {
+
     }
 }

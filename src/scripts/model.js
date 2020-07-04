@@ -1,11 +1,17 @@
 import Message from './message.js'
 export default class Model {
     constructor () {
+        
         this.messages = [];
     }
 
-    newUser() {
-
+    newUser(data) {
+        this.user = {
+            name: data.name,
+            login: data.login,
+            id: data._id
+        }
+        console.log(this.user);
     }
 
 
