@@ -1,4 +1,5 @@
 const db = require('../database/database');
+var ObjectId = require('mongodb').ObjectID;
 const logger = require(`../logger`);
 
 console.log(db);    
@@ -19,9 +20,9 @@ class UserStore {
         this.collection = collection;
     }
 
-    async getUser() {
+    async getUser(userId) {
         return (await this.collection).findOne({
-            login
+           "_id": ObjectId(userId._id)
         });
     }
 

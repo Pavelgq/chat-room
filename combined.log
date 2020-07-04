@@ -69,3 +69,17 @@
 {"name":"АО \"ЗЭУ\"","login":"demo1","pass":"123","level":"info","message":"Received data from user: "}
 {"name":"12312312","login":"123123123","pass":"12312","level":"info","message":"Received data from user: "}
 {"name":"12312312","login":"12312312333","pass":"12312","level":"info","message":"Received data from user: "}
+{"name":"Гордеев Павел","login":"gordeevzeu123","pass":"12312","level":"info","message":"Received data from user: "}
+{"name":"Юлия","login":"Атми","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"Pavel","login":"demo123","pass":"123","level":"info","message":"Received data from user: "}
+{"name":"Pavel","login":"demo12313","pass":"12312","level":"info","message":"Received data from user: "}
+{"name":"Гордеев Павел Андреевич","login":"demo543","pass":"543","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"_id":"5f002e876b807a43c43b4a8e","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}

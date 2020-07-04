@@ -1,5 +1,8 @@
-import Model from "./model.js"
-import View from "./view.js"
+import Model from "./model.js";
+import View from "./view.js";
+import {
+    getCookie
+} from "./utils.js";
 
 export default class Controller {
     constructor(model, view) {
@@ -23,7 +26,14 @@ export default class Controller {
 
         // обработчик входящих сообщений
         this.socket.onmessage = this.newMessage.bind(this);
-        
+
+        const userInfo = getCookie("userId");
+        if (userInfo) {
+            const data = {
+                '_id': userInfo
+            }
+            let req = this.responseOnServer("user/auth", data, this.newUser);
+        }
     }
 
     newMessage(event) {
@@ -61,8 +71,8 @@ export default class Controller {
                     pass: document.getElementById('newPass').value
                 }
                 let type = 'user';
-                let req = this.responseOnServer(type, data, this.newUser);
-                
+                let req = this.responseOnServer("POST", type, data, this.newUser);
+
                 break;
             case 'login-data':
 
@@ -81,21 +91,21 @@ export default class Controller {
         var raw = JSON.stringify(data);
 
         var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow'
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
         };
-        
+
         let url = `http://localhost:3000/api/${type}`;
         let response = await fetch(url, requestOptions)
-        .then(response => response.text())
-        .then(result => {
-            req = JSON.parse(result);
-            console.log(result);
-            action(req);
-        } )
-        .catch(error => console.log('error', error));
+            .then(response => response.text())
+            .then(result => {
+                req = JSON.parse(result);
+                console.log(result);
+                action(req);
+            })
+            .catch(error => console.log('error', error));
 
         return req;
     }

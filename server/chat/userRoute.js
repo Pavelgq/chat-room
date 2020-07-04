@@ -25,9 +25,10 @@ chatRouter.use((req, res, next) => {
 });
 
 
-chatRouter.get(``, async(async (req, res) => {
+chatRouter.post(`/auth`, async(async (req, res) => {
     const data = await req.body; 
-    res.send(await data);
+    const result = await chatRouter.userStore.getUser(data);
+    res.send(await result);
 }));
 
 chatRouter.post(``, async(async (req, res) => {
