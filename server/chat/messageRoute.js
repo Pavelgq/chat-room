@@ -10,11 +10,7 @@ const chatRouter = new Router();
 
 const toPage = async (cursor, skip = 0, limit = 20) => {
     return {
-      data: await (cursor.skip(skip).limit(limit).toArray()),
-      skip,
-      limit,
-      total: await cursor.count()
-    };
+      data: await (cursor.skip(skip).limit(limit).toArray()),skip,limit,total: await cursor.count()};
   };
 
 chatRouter.use((req, res, next) => {
@@ -24,9 +20,9 @@ chatRouter.use((req, res, next) => {
 });
 
 
-chatRouter.get(``, async(async (req, res) => {
-    console.log(req.method, data);
-    res.send(await data);
+chatRouter.post(`/out`, async(async (req, res) => {
+    console.log(req.method, req.data);
+    res.send(await toPage(await chatRouter.messageStore.getUserMessage()));
 }));
 
 chatRouter.post(``, async(async (req, res) => {

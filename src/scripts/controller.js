@@ -39,6 +39,9 @@ export default class Controller {
     }
 
     eventHandler(event) {
+        let data;
+        let type;
+        let req;
         switch (event.target.dataset.index) {
             case 'registration':
                 this.view.registration(event);
@@ -49,17 +52,24 @@ export default class Controller {
             case 'send':
                 let outgoingMessage = document.querySelector(".room__message").value;
                 this.socket.send(outgoingMessage);
+                data = {
+                    userId: this.model.user.id,
+                    text: outgoingMessage,
+                    date: new Date()
+                }
+                type = 'message';
+                req = this.responseOnServer(type, data, this.not);
                 return false;
                 break;
             case 'reg-data':
                 event.preventDefault();
-                let data = {
+                data = {
                     name: document.getElementById('newName').value,
                     login: document.getElementById('newLogin').value,
                     pass: document.getElementById('newPass').value
                 }
-                let type = 'user';
-                let req = this.responseOnServer(type, data, this.newUser);
+                type = 'user';
+                req = this.responseOnServer(type, data, this.newUser);
 
                 break;
             case 'login-data':
@@ -133,5 +143,9 @@ export default class Controller {
         
         this.view.newMessage(ownFlag, data);
 
+    }
+
+    not() {
+        console.log('Сообщение сохранено в базе')
     }
 }

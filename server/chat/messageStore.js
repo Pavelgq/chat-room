@@ -6,7 +6,7 @@ const setupCollection = async () => {
     const dBase = await db;
     const collection = dBase.collection(`messages`);
     collection.createIndex({
-        messageid: 1
+        date: 1
     }, {
         unique: true
     });
@@ -19,14 +19,12 @@ class MessageStore {
         this.collection = collection;
     }
 
-    async getUserMessage(userid, buf = 10) {
-        return (await this.collection).find({
-            userid
-        });
+    async getUserMessage() {
+        return (await this.collection).find().sort({"date" : -1});
     }
 
-    async save(userData) {
-        return (await this.collection).insertOne(userData);
+    async save(messageData) {
+        return (await this.collection).insertOne(messageData);
     }
 }
 
