@@ -6,13 +6,17 @@
         flex-direction: row-reverse;
         justify-content: flex-start;
 
-        & .post__text {
+        & .post__message {
             background: #FFFFFF;
             border: 1px solid rgba(112, 124, 151, 0.25);
             box-sizing: border-box;
             box-shadow: 15px 15px 35px rgba(112, 124, 151, 0.05), 10px 10px 25px rgba(112, 124, 151, 0.05);
             border-radius: 10px 10px 0 10px;
             color: #707C97; 
+        }
+
+        & .post__name {
+            display: none;
         }
     }
     
@@ -21,7 +25,9 @@
         height: 36px;
     }
     
-    &__text {
+    &__message {
+        display: flex;
+        flex-direction: column;
         font-size: 16px;
         line-height: 26px;
 
@@ -31,5 +37,13 @@
         padding: 14px 22px;
         padding-bottom: 17px;
         color: #ffffff;
+    }
+
+    &__name {
+        font-size: 12px;
+    }
+
+    &__text {
+        
     }
 }

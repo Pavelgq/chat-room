@@ -14,18 +14,6 @@ export default class Controller {
     }
 
     init() {
-        this.socket = new WebSocket("ws://localhost:8081");
-        console.log(this.socket);
-        // отправить сообщение из формы publish
-        // document.forms.publish.onsubmit = function () {
-        //     let outgoingMessage = this.message.value;
-
-        //     socket.send(outgoingMessage);
-        //     return false;
-        // };
-
-        // обработчик входящих сообщений
-        this.socket.onmessage = this.newMessage.bind(this);
 
         const userInfo = getCookie("userId");
         if (userInfo) {
@@ -71,7 +59,7 @@ export default class Controller {
                     pass: document.getElementById('newPass').value
                 }
                 let type = 'user';
-                let req = this.responseOnServer("POST", type, data, this.newUser);
+                let req = this.responseOnServer(type, data, this.newUser);
 
                 break;
             case 'login-data':
@@ -120,10 +108,30 @@ export default class Controller {
     newUser(data) {
         this.model.newUser(data);
         this.saveCookie();
+        this.socket = new WebSocket(`ws://localhost:8081`);
+        console.log(this.socket);
+        // отправить сообщение из формы publish
+        // document.forms.publish.onsubmit = function () {
+        //     let outgoingMessage = this.message.value;
+
+        //     socket.send(outgoingMessage);
+        //     return false;
+        // };
+
+        // обработчик входящих сообщений
+        this.socket.onmessage = this.newMessage.bind(this);
+
         this.view.run();
     }
 
-    newMessage() {
+    newMessage(event) {
+        console.log(event)
+        const data = JSON.parse(event.data);
+
+        const ownFlag = (data.userId === this.model.user.id);
+
+        
+        this.view.newMessage(ownFlag, data);
 
     }
 }

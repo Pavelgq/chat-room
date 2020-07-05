@@ -55,5 +55,24 @@ export default class View {
           <span class="user__status">online</span>
       </p>
     </div>`;
+
+    container.innerHTML+=template;
+  }
+
+  newMessage(flag, data) {
+    const container = document.querySelector(".room__field");
+    const myMessage = flag?"post__my":"";
+
+    const template = `<div class="room__post post ${myMessage}">
+    <!-- <div class="user__photo"> -->
+    <img class="user__avatar post__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя"
+        srcset="">
+    
+    <p class="post__message">
+        <span class="post__name">${data.userInfo.name}</span>
+        <span class="post__text">${data.text}</span>
+    </p>
+</div>`;
+    container.innerHTML += template;
   }
 }

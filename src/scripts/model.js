@@ -10,7 +10,7 @@ export default class Model {
             name: data.name,
             login: data.login,
             id: data._id
-        }
+        };
         console.log(this.user);
     }
 
