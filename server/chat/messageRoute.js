@@ -22,7 +22,7 @@ chatRouter.use((req, res, next) => {
 
 chatRouter.post(`/out`, async(async (req, res) => {
     console.log(req.method, req.data);
-    res.send(await toPage(await chatRouter.messageStore.getUserMessage()));
+    res.send(await toPage(await chatRouter.messageStore.getUserMessage(), req.data.skip, req.data.limit));
 }));
 
 chatRouter.post(``, async(async (req, res) => {

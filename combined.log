@@ -119,3 +119,23 @@
 {"name":"Какаха","login":"Ках","pass":"1234","level":"info","message":"Received data from user: "}
 {"message":"Server running at http://localhost:3000/","level":"info"}
 {"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"text":"ewdwe","date":"2020-07-05T20:41:31.426Z","level":"info","message":"Received data from user: "}
+{"text":"123","date":"2020-07-05T20:42:20.736Z","level":"info","message":"Received data from user: "}
+{"userId":"5f01e6a9fa06af14d087c0fc","text":"123","date":"2020-07-05T20:42:52.425Z","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"userId":"5f01e6a9fa06af14d087c0fc","text":"Написать","date":"2020-07-07T15:21:30.183Z","level":"info","message":"Received data from user: "}
+{"userId":"5f01e6a9fa06af14d087c0fc","text":"Написать","date":"2020-07-07T15:22:44.890Z","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"PavelGQ","login":"pavel","pass":"123","level":"info","message":"Received data from user: "}
+{"userId":"5f0494247de0ea73a0b30575","text":"123213","date":"2020-07-07T15:26:34.333Z","level":"info","message":"Received data from user: "}
+{"userId":"5f0494247de0ea73a0b30575","text":"Привет","date":"2020-07-07T15:27:13.943Z","level":"info","message":"Received data from user: "}
+{"userId":"5f0494247de0ea73a0b30575","text":"Ответь мне что-нибудь","date":"2020-07-07T15:27:23.672Z","level":"info","message":"Received data from user: "}
+{"userId":"5f0494247de0ea73a0b30575","text":"Я жду","date":"2020-07-07T15:27:30.688Z","level":"info","message":"Received data from user: "}
+{"name":"Pavel","login":"pavelgqq","pass":"12345","level":"info","message":"Received data from user: "}
+{"userId":"5f04970a7de0ea73a0b3057a","text":"Привет","date":"2020-07-07T15:39:05.557Z","level":"info","message":"Received data from user: "}
+{"name":"щарываыщш","login":"влдаоыар","pass":"ывавлдлыо","level":"info","message":"Received data from user: "}
+{"userId":"5f0497297de0ea73a0b3057c","text":"И тебе привет","date":"2020-07-07T15:39:30.460Z","level":"info","message":"Received data from user: "}
+{"userId":"5f0497297de0ea73a0b3057c","text":"Оаоа","date":"2020-07-07T15:39:39.914Z","level":"info","message":"Received data from user: "}
+{"userId":"5f04970a7de0ea73a0b3057a","text":"Привет","date":"2020-07-07T15:39:42.010Z","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
