@@ -1,6 +1,8 @@
 export default class View {
   constructor(model) {
     this.model = model;
+
+    this.showMessages = this.showMessages.bind(this);
   }
 
   showMessage(pack) {
@@ -8,13 +10,19 @@ export default class View {
     messageElem.setAttribute('class', 'room__post post');
 
     let template = `
-    <img class="user__avatar post__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" srcset="${pack.userId}">
+    <img class="user__avatar post__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" >
     <p class="post__text">
     ${pack.text}
     </p>`;
     messageElem.innerHTML = template;
 
     document.querySelector('.room__field').appendChild(messageElem);
+  }
+
+  showMessages(pack) {
+    pack.data.reverse().forEach(element => {
+      this.newMessage(element);
+    });
   }
 
   registration(event) {
@@ -59,8 +67,9 @@ export default class View {
     container.innerHTML+=template;
   }
 
-  newMessage(flag, data) {
+  newMessage(data) {
     const container = document.querySelector(".room__field");
+    const flag = (data.userId === this.model.user.id);
     const myMessage = flag?"post__my":"";
 
     const template = `<div class="room__post post ${myMessage}">
@@ -69,7 +78,6 @@ export default class View {
         srcset="">
     
     <p class="post__message">
-        <span class="post__name">${data.userInfo.name}</span>
         <span class="post__text">${data.text}</span>
     </p>
 </div>`;

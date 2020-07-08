@@ -7,3 +7,4 @@ controller.init();
 controller.connectElements('.room__send', 'click');
 controller.connectElements('.login__button', 'click');
 controller.connectElements('#form__registration', 'submit');
+controller.connectElements('.room__load', 'click');

@@ -1,6 +1,6 @@
 const WebSocketServer = new require('ws');
 const getCookie = new require('../utils/getCookie');
-const userStore = new require('../chat/userStore')
+const userStore = new require('../chat/userStore');
 
 // подключённые клиенты
 var clients = {};
@@ -21,7 +21,6 @@ webSocketServer.on('connection', function (ws, data) {
     userInfo = result;
   });
 
-  console.log(userInfo);
   clients[id] = ws;
   
   console.log("новое соединение " + id);
@@ -33,16 +32,15 @@ webSocketServer.on('connection', function (ws, data) {
       userId: id,
       text: message
     };
-
+    
     for (var key in clients) {
       clients[key].send(JSON.stringify(pack));
     }
   });
 
   ws.on('close', function () {
-    // delete clients[id];
-
-    // console.log('соединение закрыто ' + id);
+    delete clients[id];
+    console.log('соединение закрыто ' + id);
 
 
     // if (event.wasClean) {

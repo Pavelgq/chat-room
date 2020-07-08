@@ -10,7 +10,7 @@ const chatRouter = new Router();
 
 const toPage = async (cursor, skip = 0, limit = 20) => {
     return {
-      data: await (cursor.skip(skip).limit(limit).toArray()),skip,limit,total: await cursor.count()};
+      data: await (cursor.sort( { date: -1 } ).skip(skip).limit(limit).toArray()),skip,limit,total: await cursor.count()};
   };
 
 chatRouter.use((req, res, next) => {
@@ -21,8 +21,8 @@ chatRouter.use((req, res, next) => {
 
 
 chatRouter.post(`/out`, async(async (req, res) => {
-    console.log(req.method, req.data);
-    res.send(await toPage(await chatRouter.messageStore.getUserMessage(), req.data.skip, req.data.limit));
+    const data = await req.body;
+    res.send(await toPage(await chatRouter.messageStore.getUserMessage(), data.skip*1, data.limit*1));
 }));
 
 chatRouter.post(``, async(async (req, res) => {
@@ -38,6 +38,8 @@ chatRouter.use((exception, req, res, next) => {
     dataRenderer.renderException(req, res, exception);
     next();
   });
+
+
 
 module.exports = (messageStore) => {
     chatRouter.messageStore = messageStore;

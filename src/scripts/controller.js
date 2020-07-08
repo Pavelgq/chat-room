@@ -11,17 +11,21 @@ export default class Controller {
 
         this.eventHandler = this.eventHandler.bind(this);
         this.newUser = this.newUser.bind(this);
+
+        this.addMessage = this.loadMessage().bind(this);
     }
 
     init() {
 
         const userInfo = getCookie("userId");
-        if (userInfo) {
+        if (userInfo !== undefined) {
             const data = {
                 '_id': userInfo
             }
-            let req = this.responseOnServer("user/auth", data, this.newUser);
+            this.requestOnServer("user/auth", data, this.newUser);
+            this.addMessage(6);
         }
+
     }
 
     newMessage(event) {
@@ -29,7 +33,7 @@ export default class Controller {
         let pack = JSON.parse(event.data);
         this.model.addMessage(pack);
         console.log(this.model);
-        this.view.showMessage(pack);
+        this.view.newMessage(pack);
     }
 
     connectElements(selector, event) {
@@ -58,7 +62,7 @@ export default class Controller {
                     date: new Date()
                 }
                 type = 'message';
-                req = this.responseOnServer(type, data, this.not);
+                req = this.requestOnServer(type, data, this.not);
                 return false;
                 break;
             case 'reg-data':
@@ -69,18 +73,21 @@ export default class Controller {
                     pass: document.getElementById('newPass').value
                 }
                 type = 'user';
-                req = this.responseOnServer(type, data, this.newUser);
+                req = this.requestOnServer(type, data, this.newUser);
 
                 break;
             case 'login-data':
 
                 break;
+
+            case 'load-message':
+                this.addMessage(10);
             default:
                 break;
         }
     }
 
-    async responseOnServer(type, data, action) {
+    async requestOnServer(type, data, action) {
         let req;
 
         var myHeaders = new Headers();
@@ -132,17 +139,31 @@ export default class Controller {
         this.socket.onmessage = this.newMessage.bind(this);
 
         this.view.run();
+        
+       
+
     }
 
     newMessage(event) {
-        console.log(event)
+        console.log(event);
         const data = JSON.parse(event.data);
 
-        const ownFlag = (data.userId === this.model.user.id);
 
         
-        this.view.newMessage(ownFlag, data);
+        this.view.newMessage(data);
 
+    }
+
+    loadMessage() {
+        let data = {
+            skip: 0,
+            limit: 0
+        }
+        return (limit) => {
+            data.limit = limit;
+            this.requestOnServer('message/out', data, this.view.showMessages);
+            data.skip += data;
+        }
     }
 
     not() {
