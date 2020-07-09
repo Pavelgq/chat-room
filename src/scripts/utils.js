@@ -1,5 +1,3 @@
-
-
 function getCookie(name) {
         var cookie = " " + document.cookie;
         var search = " " + name + "=";

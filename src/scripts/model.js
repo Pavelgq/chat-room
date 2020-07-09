@@ -1,7 +1,7 @@
 import Message from './message.js'
 export default class Model {
     constructor () {
-        
+        this.users = [];
         this.messages = [];
     }
 

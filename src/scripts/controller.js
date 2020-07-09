@@ -134,9 +134,10 @@ export default class Controller {
         //     socket.send(outgoingMessage);
         //     return false;
         // };
-
+        this.socket.onopen = this.userOnline.bind(this);
         // обработчик входящих сообщений
         this.socket.onmessage = this.newMessage.bind(this);
+        this.socket.onclose = this.userOffline.bind(this);
 
         this.view.run();
         
@@ -144,14 +145,31 @@ export default class Controller {
 
     }
 
+    userOnline(event) {
+        if (event.data) {
+            this.model.users.push(JSON.parse(event.data));      
+        }
+        this.view.renderUsers();
+        //TODO: 
+    }
+
+    userOffline(event) {
+        const userId = event.data;
+        let index;
+        for (i = 0; i < this.model.users.length; i++) {
+            if (this.model.users[i].id == userId) {
+                index = i;
+                break;
+            }
+        }
+        this.model.users.splice(index,1);
+        this.view.renderUsers();
+    }
+
     newMessage(event) {
         console.log(event);
         const data = JSON.parse(event.data);
-
-
-        
         this.view.newMessage(data);
-
     }
 
     loadMessage() {

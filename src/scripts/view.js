@@ -67,6 +67,23 @@ export default class View {
     container.innerHTML+=template;
   }
 
+  renderUsers() {
+    const container = document.querySelector(".chat__user");
+    container.innerHTML = '';
+    this.model.users.forEach(element => {
+      const template = `<div class="user__photo">
+      <img class="user__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" srcset="">
+  </div>
+  <p class="user__info">
+      <span class="user__name">${element.name}</span>
+      <span class="user__status">online</span>
+  </p> `;
+      container.innerHTML += template;
+    })
+    
+
+  }
+
   newMessage(data) {
     const container = document.querySelector(".room__field");
     const flag = (data.userId === this.model.user.id);

@@ -24,6 +24,11 @@ webSocketServer.on('connection', function (ws, data) {
   clients[id] = ws;
   
   console.log("новое соединение " + id);
+  ws.on('open', function () {
+    for (var key in clients) {
+      clients[key].send(JSON.stringify(userInfo));
+    }
+  })
 
   ws.on('message', function (message) {
     console.log('получено сообщение ' + message);
@@ -41,7 +46,9 @@ webSocketServer.on('connection', function (ws, data) {
   ws.on('close', function () {
     delete clients[id];
     console.log('соединение закрыто ' + id);
-
+    for (var key in clients) {
+      clients[key].send(JSON.stringify(id));
+    }
 
     // if (event.wasClean) {
     //   console.log('Соединение закрыто чисто');
