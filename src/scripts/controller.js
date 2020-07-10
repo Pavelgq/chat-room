@@ -62,7 +62,7 @@ export default class Controller {
                     date: new Date()
                 }
                 type = 'message';
-                req = this.requestOnServer(type, data, this.not);
+                req = this.requestOnServer(type, data, this.log);
                 return false;
                 break;
             case 'reg-data':
@@ -134,42 +134,49 @@ export default class Controller {
         //     socket.send(outgoingMessage);
         //     return false;
         // };
-        this.socket.onopen = this.userOnline.bind(this);
+        this.socket.onopen = this.log('новый пользователь');
         // обработчик входящих сообщений
         this.socket.onmessage = this.newMessage.bind(this);
-        this.socket.onclose = this.userOffline.bind(this);
+        this.socket.onclose = this.log('пользователь вышел');
 
         this.view.run();
-        
-       
+
+
 
     }
 
-    userOnline(event) {
-        if (event.data) {
-            this.model.users.push(JSON.parse(event.data));      
-        }
-        this.view.renderUsers();
-        //TODO: 
-    }
 
-    userOffline(event) {
-        const userId = event.data;
-        let index;
-        for (i = 0; i < this.model.users.length; i++) {
-            if (this.model.users[i].id == userId) {
-                index = i;
-                break;
-            }
-        }
-        this.model.users.splice(index,1);
-        this.view.renderUsers();
-    }
 
+   
     newMessage(event) {
         console.log(event);
         const data = JSON.parse(event.data);
-        this.view.newMessage(data);
+        switch (data.type) {
+            case "open":
+                if (data) {
+                    this.model.users.push(data.userInfo);
+                }
+                this.view.renderUsers();
+                break;
+            case "message":
+                this.view.newMessage(data);
+                break;
+            case "close":
+                const userId = data.id;
+                let index;
+                for (let i = 0; i < this.model.users.length; i++) {
+                    if (this.model.users[i].id == userId) {
+                        index = i;
+                        break;
+                    }
+                }
+                this.model.users.splice(index, 1);
+                this.view.renderUsers();
+                break;
+            default:
+                break;
+        }
+
     }
 
     loadMessage() {
@@ -184,7 +191,7 @@ export default class Controller {
         }
     }
 
-    not() {
-        console.log('Сообщение сохранено в базе')
+    log(message) {
+        console.log(message)
     }
 }

@@ -184,3 +184,32 @@
 {"message":"Server running at http://localhost:3000/","level":"info"}
 {"name":"123","login":"123","pass":"123","level":"info","message":"Received data from user: "}
 {"userId":"5f07786a9504600816655dda","text":"sdfs","date":"2020-07-09T20:05:07.366Z","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"MongoServerSelectionError","reason":{"type":"ReplicaSetNoPrimary","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":null},"level":"error","message":"Failed to connect to MongoDB connection <monitor> to 3.121.53.9:27017 closed","stack":"MongoServerSelectionError: connection <monitor> to 3.121.53.9:27017 closed\n    at Timeout._onTimeout (C:\\Users\\Pavel\\Documents\\chat-room\\node_modules\\mongodb\\lib\\core\\sdam\\topology.js:430:30)\n    at listOnTimeout (internal/timers.js:549:17)\n    at processTimers (internal/timers.js:492:7)"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"Павел","login":"pavelgq@yandex.ru","pass":"123","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"userId":"5f07fe5dc06dc627704beee7","text":"123","date":"2020-07-10T05:45:17.659Z","level":"info","message":"Received data from user: "}
+{"name":"Pavel","login":"pavelgq","pass":"123","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"Гордеев Павел","login":"pavelgq21","pass":"123","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"MongoServerSelectionError","reason":{"type":"ReplicaSetNoPrimary","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":null},"level":"error","message":"Failed to connect to MongoDB connection timed out","stack":"MongoServerSelectionError: connection timed out\n    at Timeout._onTimeout (C:\\Users\\Pavel\\Documents\\chat-room\\node_modules\\mongodb\\lib\\core\\sdam\\topology.js:430:30)\n    at listOnTimeout (internal/timers.js:549:17)\n    at processTimers (internal/timers.js:492:7)"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"MongoServerSelectionError","reason":{"type":"ReplicaSetNoPrimary","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":null},"level":"error","message":"Failed to connect to MongoDB connection timed out","stack":"MongoServerSelectionError: connection timed out\n    at Timeout._onTimeout (C:\\Users\\Pavel\\Documents\\chat-room\\node_modules\\mongodb\\lib\\core\\sdam\\topology.js:430:30)\n    at listOnTimeout (internal/timers.js:549:17)\n    at processTimers (internal/timers.js:492:7)"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"MongoServerSelectionError","reason":{"type":"ReplicaSetNoPrimary","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":null},"level":"error","message":"Failed to connect to MongoDB connection timed out","stack":"MongoServerSelectionError: connection timed out\n    at Timeout._onTimeout (C:\\Users\\Pavel\\Documents\\chat-room\\node_modules\\mongodb\\lib\\core\\sdam\\topology.js:430:30)\n    at listOnTimeout (internal/timers.js:549:17)\n    at processTimers (internal/timers.js:492:7)"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"АО \"Завод энергозащитных устройств\"","login":"demo","pass":"123","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
