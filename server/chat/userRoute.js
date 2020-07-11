@@ -31,6 +31,7 @@ chatRouter.post(`/auth`, async(async (req, res) => {
     res.send(await result);
 }));
 
+
 chatRouter.post(``, async(async (req, res) => {
     const data = await req.body; 
     logger.info(`Received data from user: `, data);

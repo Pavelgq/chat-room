@@ -28,13 +28,13 @@ export default class Controller {
 
     }
 
-    newMessage(event) {
-        console.log(event.data);
-        let pack = JSON.parse(event.data);
-        this.model.addMessage(pack);
-        console.log(this.model);
-        this.view.newMessage(pack);
-    }
+    // newMessage(event) {
+    //     console.log(event.data);
+    //     let pack = JSON.parse(event.data);
+    //     this.model.addMessage(pack);
+    //     console.log(this.model);
+    //     this.view.newMessage(pack);
+    // }
 
     connectElements(selector, event) {
         let elements = document.querySelectorAll(selector);
@@ -117,7 +117,7 @@ export default class Controller {
 
 
     saveCookie() {
-        if (this.model.user) {
+        if (this.model.user !== undefined) {
             document.cookie = `userId = ${this.model.user.id}`;
         }
     }
@@ -154,7 +154,11 @@ export default class Controller {
         switch (data.type) {
             case "open":
                 if (data) {
-                    this.model.users.push(data.userInfo);
+                    this.model.users = [];
+                    data.userInfo.forEach(element => {
+                        this.model.users.push(element);
+                    });
+                    
                 }
                 this.view.renderUsers();
                 break;

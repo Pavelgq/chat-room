@@ -1,8 +1,7 @@
 const db = require('../database/database');
 var ObjectId = require('mongodb').ObjectID;
 const logger = require(`../logger`);
-
-console.log(db);    
+  
 const setupCollection = async () => {
     const dBase = await db;
     const collection = dBase.collection(`users`);
@@ -24,6 +23,14 @@ class UserStore {
         return (await this.collection).findOne({
            "_id": ObjectId(userId._id)
         });
+    }
+    //TODO: получить всех пользователей с данными ключами в массиве
+
+    async getArrayUsers(connectUsers) {
+        const searchPack = connectUsers.map(function (userId) {return ObjectId(userId)});
+        return (await this.collection).find({
+            "_id": { $in:searchPack}
+         }).toArray();
     }
 
     async save(userData) {

@@ -68,16 +68,18 @@ export default class View {
   }
 
   renderUsers() {
-    const container = document.querySelector(".chat__user");
+    const container = document.querySelector(".chat__conected");
     container.innerHTML = '';
     this.model.users.forEach(element => {
-      const template = `<div class="user__photo">
+      const template = `<div class=".chat_user user">
+      <div class="user__photo">
       <img class="user__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" srcset="">
   </div>
   <p class="user__info">
       <span class="user__name">${element.name}</span>
       <span class="user__status">online</span>
-  </p> `;
+  </p> 
+    </div>`;
       container.innerHTML += template;
     })
     
@@ -86,7 +88,7 @@ export default class View {
 
   newMessage(data) {
     const container = document.querySelector(".room__field");
-    const flag = (data.userId === this.model.user.id);
+    const flag = (data.userId === (this.model.user.id||0));
     const myMessage = flag?"post__my":"";
 
     const template = `<div class="room__post post ${myMessage}">

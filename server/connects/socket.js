@@ -10,8 +10,6 @@ var webSocketServer = new WebSocketServer.Server({
   port: 8081
 });
 
-
-
 webSocketServer.on('connection', function (ws, data) {
   const cookieIndex = data.rawHeaders.indexOf('Cookie', 0) + 1;
   const id = getCookie(data.rawHeaders[cookieIndex], "userId");
@@ -19,24 +17,30 @@ webSocketServer.on('connection', function (ws, data) {
     '_id': id
   }
   let userInfo;
-  userStore.getUser(userid).then((result) => {
-    userInfo = result;
+  let createPack = {
+    userInfo: [],
+    type: "open"
+  }
+  clients[id] = ws;
 
-    let createPack = {
-      userInfo: userInfo,
-      type: "open"
-    }
+  for (var key in clients) {
+    createPack.userInfo.push(key)
+  }
+  console.log(createPack.userInfo);
+  userStore.getArrayUsers(createPack.userInfo).then((result) => {
     console.log('open user')
+    console.log(result);
+    createPack.userInfo = result;
     for (var key in clients) {
       clients[key].send(JSON.stringify(createPack));
     }
-  });
 
-  clients[id] = ws;
+  });
+  
 
   console.log("новое соединение " + id);
 
-  
+
 
 
   ws.on('message', function (message) {
