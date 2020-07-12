@@ -54,16 +54,28 @@ export default class Controller {
                 this.view.login(event);
                 break;
             case 'send':
-                let outgoingMessage = document.querySelector(".room__message").value;
-                this.socket.send(outgoingMessage);
-                data = {
-                    userId: this.model.user.id,
-                    text: outgoingMessage,
-                    date: new Date()
+                if (event.keyCode == 13 || event.type == 'click') {
+                    var content = this.value; 
+                    // var caret = getCaret(this);     
+                    if (event.shiftKey) {
+                        // this.value = content.substring(0, caret - 1) + "\n" + content.substring(caret, content.length);
+                        event.stopPropagation();
+                    } else {
+                        // this.value = content.substring(0, caret - 1) + content.substring(caret, content.length);
+                        let outgoingMessage = document.querySelector(".room__message").value;
+                        this.socket.send(outgoingMessage);
+                        data = {
+                            userId: this.model.user.id,
+                            text: outgoingMessage,
+                            date: new Date()
+                        }
+                        type = 'message';
+                        req = this.requestOnServer(type, data, this.log);
+                        return false;
+                    }
+
+
                 }
-                type = 'message';
-                req = this.requestOnServer(type, data, this.log);
-                return false;
                 break;
             case 'reg-data':
                 event.preventDefault();
@@ -147,7 +159,7 @@ export default class Controller {
 
 
 
-   
+
     newMessage(event) {
         console.log(event);
         const data = JSON.parse(event.data);
@@ -158,7 +170,7 @@ export default class Controller {
                     data.userInfo.forEach(element => {
                         this.model.users.push(element);
                     });
-                    
+
                 }
                 this.view.renderUsers();
                 break;

@@ -3,6 +3,8 @@ export default class View {
     this.model = model;
 
     this.showMessages = this.showMessages.bind(this);
+
+    
   }
 
   showMessage(pack) {
@@ -101,5 +103,11 @@ export default class View {
     </p>
 </div>`;
     container.innerHTML += template;
+
+    const block = document.querySelector(".room__field");
+    block.scrollTop = block.scrollHeight;
+
+    const field = document.getElementById("massage");
+    field.value = '';
   }
 }
