@@ -360,3 +360,146 @@
 {"message":"Server running at http://localhost:3000/","level":"info"}
 {"message":"Server running at http://localhost:3000/","level":"info"}
 {"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"userId":"5f0620131c09173844cc9a59","text":"Привет\nА я могу набирать многострочные сообщения\n","date":"2020-07-12T19:08:52.188Z","level":"info","message":"Received data from user: "}
+{"userId":"5f0620131c09173844cc9a59","text":"Но они не отображаются в чате(\n","date":"2020-07-12T19:09:04.411Z","level":"info","message":"Received data from user: "}
+{"userId":"5f0620131c09173844cc9a59","text":"Это грусть\n","date":"2020-07-12T19:09:19.875Z","level":"info","message":"Received data from user: "}
+{"userId":"5f0620131c09173844cc9a59","text":"Но я и так нормально поработал\n","date":"2020-07-12T19:09:31.627Z","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"Павел123","login":"Barsic123","pass":"123","avatar":"C:\\fakepath\\42586airplane_98957.jpg","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"123451","login":"1231432","pass":"213","avatar":{},"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"avatar":{},"name":"ewwwwwwwwwwwwwwwwwwwwee","login":"1232131341","pass":"1234","level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"12312","login":"12312qweqw","pass":"qwdq","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"dsafa","login":"asdfas","pass":"xvzx","level":"info","message":"Received data from user: "}
+{"message":"Server running at http://localhost:3000/","level":"info"}

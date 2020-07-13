@@ -22,8 +22,8 @@ export default class Controller {
             const data = {
                 '_id': userInfo
             }
-            this.requestOnServer("user/auth", data, this.newUser);
-            this.addMessage(6);
+            //this.requestOnServer("user/auth", data, this.newUser);
+            //this.addMessage(6);
         }
 
     }
@@ -79,13 +79,20 @@ export default class Controller {
                 break;
             case 'reg-data':
                 event.preventDefault();
+               
+                const uploadFile = document.getElementById('upload'); 
+                const formData = new FormData();
+                formData.append('avatar', uploadFile.files[0]);
                 data = {
+                    avatar: formData,
                     name: document.getElementById('newName').value,
                     login: document.getElementById('newLogin').value,
                     pass: document.getElementById('newPass').value
+                    
                 }
+                console.log(data);
                 type = 'user';
-                req = this.requestOnServer(type, data, this.newUser);
+                req = this.requestOnServer(type, new FormData(form__registration), this.newUser);
 
                 break;
             case 'login-data':
@@ -103,17 +110,17 @@ export default class Controller {
         let req;
 
         var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify(data);
+        //myHeaders.append("Content-Type", "form-data");
+        // , "application/json"
+        //var raw = JSON.stringify(data);
 
         var requestOptions = {
             method: 'POST',
             headers: myHeaders,
-            body: raw,
+            body: data,
             redirect: 'follow'
         };
-
+        console.log(data)
         let url = `http://localhost:3000/api/${type}`;
         let response = await fetch(url, requestOptions)
             .then(response => response.text())
@@ -202,7 +209,7 @@ export default class Controller {
         }
         return (limit) => {
             data.limit = limit;
-            this.requestOnServer('message/out', data, this.view.showMessages);
+            //this.requestOnServer('message/out', data, this.view.showMessages);
             data.skip += data;
         }
     }
