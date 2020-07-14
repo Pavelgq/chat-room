@@ -24,18 +24,18 @@ webSocketServer.on('connection', function (ws, data) {
   clients[id] = ws;
 
   for (var key in clients) {
-    createPack.userInfo.push(key)
+    createPack.userInfo.push(key);
   }
   console.log(createPack.userInfo);
-  // userStore.getArrayUsers(createPack.userInfo).then((result) => {
-  //   console.log('open user')
-  //   console.log(result);
-  //   createPack.userInfo = result;
-  //   for (var key in clients) {
-  //     clients[key].send(JSON.stringify(createPack));
-  //   }
+  userStore.getArrayUsers(createPack.userInfo).then((result) => {
+    console.log('open user')
+    console.log(result);
+    createPack.userInfo = result;
+    for (var key in clients) {
+      clients[key].send(JSON.stringify(createPack));
+    }
 
-  // });
+  });
   
 
   console.log("новое соединение " + id);
@@ -63,7 +63,7 @@ webSocketServer.on('connection', function (ws, data) {
     delete clients[id];
     console.log('соединение закрыто ' + id);
     let pack = {
-      id: id,
+      _id: id,
       type: "close"
     }
     for (var key in clients) {

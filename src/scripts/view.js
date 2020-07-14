@@ -10,7 +10,7 @@ export default class View {
   showMessage(pack) {
     let messageElem = document.createElement("DIV");
     messageElem.setAttribute('class', 'room__post post');
-
+    
     let template = `
     <img class="user__avatar post__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" >
     <p class="post__text">
@@ -51,6 +51,8 @@ export default class View {
     
     const header = document.querySelector(".header__user");
     const nameContainer = header.querySelector(".user__name");
+    //TODO: URL сервера в переменную глобальную или относительный путь если сервер будет статику раздавать
+    const avatar = header.querySelector(".user__avatar").src = this.model.getPath(this.model.user);
     nameContainer.innerText = `${this.model.user.name} <${this.model.user.login}>`;
   }
 
@@ -58,7 +60,7 @@ export default class View {
     const container = document.querySelector(".chat__conected");
     const template = `<div class="chat__user user">
       <div class="user__photo">
-          <img class="user__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" srcset="">
+          <img class="user__avatar" src="${this.model.getPath(data)}" alt="Аватар пользователя" srcset="">
       </div>
       <p class="user__info">
           <span class="user__name">${data.name} <${data.login}></span>
@@ -75,7 +77,7 @@ export default class View {
     this.model.users.forEach(element => {
       const template = `<div class=".chat_user user">
       <div class="user__photo">
-      <img class="user__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" srcset="">
+      <img class="user__avatar" src="${this.model.getPath(element)}" alt="Аватар пользователя" srcset="">
   </div>
   <p class="user__info">
       <span class="user__name">${element.name}</span>
@@ -88,14 +90,14 @@ export default class View {
 
   }
 
-  newMessage(data) {
+  newMessage(data, user) {
     const container = document.querySelector(".room__field");
-    const flag = (data.userId === (this.model.user.id||0));
+    const flag = (data.userId === (this.model.user._id||0));
     const myMessage = flag?"post__my":"";
-
+    
     const template = `<div class="room__post post ${myMessage}">
     <!-- <div class="user__photo"> -->
-    <img class="user__avatar post__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя"
+    <img class="user__avatar post__avatar" src="${this.model.getPath(user)}" alt="Аватар пользователя"
         srcset="">
     
     <p class="post__message">
@@ -103,7 +105,7 @@ export default class View {
     </p>
 </div>`;
     container.innerHTML += template;
-
+//${data.avatar.path}
     const block = document.querySelector(".room__field");
     block.scrollTop = block.scrollHeight;
 

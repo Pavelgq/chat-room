@@ -1,7 +1,9 @@
 import Model from "./model.js";
 import View from "./view.js";
 import {
-    getCookie
+    getCookie,
+    isJsonString,
+    pasteIntoInput
 } from "./utils.js";
 
 export default class Controller {
@@ -11,8 +13,7 @@ export default class Controller {
 
         this.eventHandler = this.eventHandler.bind(this);
         this.newUser = this.newUser.bind(this);
-
-        this.addMessage = this.loadMessage().bind(this);
+        this.addMessage = this.loadMessage.bind(this);
     }
 
     init() {
@@ -22,19 +23,16 @@ export default class Controller {
             const data = {
                 '_id': userInfo
             }
-            //this.requestOnServer("user/auth", data, this.newUser);
-            //this.addMessage(6);
+            this.requestOnServer("user/auth", JSON.stringify(data), this.newUser);
+            this.addMessage(6);
         }
 
-    }
+        
+        var input = document.getElementById("massage");
 
-    // newMessage(event) {
-    //     console.log(event.data);
-    //     let pack = JSON.parse(event.data);
-    //     this.model.addMessage(pack);
-    //     console.log(this.model);
-    //     this.view.newMessage(pack);
-    // }
+        
+        
+    }
 
     connectElements(selector, event) {
         let elements = document.querySelectorAll(selector);
@@ -55,27 +53,28 @@ export default class Controller {
                 break;
             case 'send':
                 if (event.keyCode == 13 || event.type == 'click') {
-                    var content = this.value; 
-                    // var caret = getCaret(this);     
+                    var content = event.target.value; 
+                    console.log(event.target);
                     if (event.shiftKey) {
-                        // this.value = content.substring(0, caret - 1) + "\n" + content.substring(caret, content.length);
-                        event.stopPropagation();
+                        event.preventDefault();
+                        // pasteIntoInput(event.target, '\n');
                     } else {
-                        // this.value = content.substring(0, caret - 1) + content.substring(caret, content.length);
-                        let outgoingMessage = document.querySelector(".room__message").value;
+                        let outgoingMessage =  event.target.value;
                         this.socket.send(outgoingMessage);
                         data = {
-                            userId: this.model.user.id,
+                            userId: this.model.user._id,
                             text: outgoingMessage,
                             date: new Date()
                         }
                         type = 'message';
-                        req = this.requestOnServer(type, data, this.log);
+                        req = this.requestOnServer(type, JSON.stringify(data), this.log);
                         return false;
                     }
-
-
                 }
+                else {
+                    this.cursorPosition = event.target.selectionStart;
+                }
+
                 break;
             case 'reg-data':
                 event.preventDefault();
@@ -101,6 +100,7 @@ export default class Controller {
 
             case 'load-message':
                 this.addMessage(10);
+                break;
             default:
                 break;
         }
@@ -110,9 +110,9 @@ export default class Controller {
         let req;
 
         var myHeaders = new Headers();
-        //myHeaders.append("Content-Type", "form-data");
-        // , "application/json"
-        //var raw = JSON.stringify(data);
+        if (isJsonString(data)) {
+            myHeaders.append("Content-Type", "application/json");
+        }
 
         var requestOptions = {
             method: 'POST',
@@ -120,7 +120,7 @@ export default class Controller {
             body: data,
             redirect: 'follow'
         };
-        console.log(data)
+        
         let url = `http://localhost:3000/api/${type}`;
         let response = await fetch(url, requestOptions)
             .then(response => response.text())
@@ -137,7 +137,7 @@ export default class Controller {
 
     saveCookie() {
         if (this.model.user !== undefined) {
-            document.cookie = `userId = ${this.model.user.id}`;
+            document.cookie = `userId = ${this.model.user._id}`;
         }
     }
 
@@ -145,14 +145,7 @@ export default class Controller {
         this.model.newUser(data);
         this.saveCookie();
         this.socket = new WebSocket(`ws://localhost:8081`);
-        console.log(this.socket);
-        // отправить сообщение из формы publish
-        // document.forms.publish.onsubmit = function () {
-        //     let outgoingMessage = this.message.value;
-
-        //     socket.send(outgoingMessage);
-        //     return false;
-        // };
+             
         this.socket.onopen = this.log('новый пользователь');
         // обработчик входящих сообщений
         this.socket.onmessage = this.newMessage.bind(this);
@@ -182,13 +175,14 @@ export default class Controller {
                 this.view.renderUsers();
                 break;
             case "message":
-                this.view.newMessage(data);
+                const userData = this.model.getUser(data.userId);
+                this.view.newMessage(data, userData);
                 break;
             case "close":
-                const userId = data.id;
+                const userId = data._id;
                 let index;
                 for (let i = 0; i < this.model.users.length; i++) {
-                    if (this.model.users[i].id == userId) {
+                    if (this.model.users[i]._id == userId) {
                         index = i;
                         break;
                     }
@@ -209,12 +203,13 @@ export default class Controller {
         }
         return (limit) => {
             data.limit = limit;
-            //this.requestOnServer('message/out', data, this.view.showMessages);
+            this.requestOnServer('message/out', data, this.view.showMessages);
             data.skip += data;
         }
     }
 
     log(message) {
-        console.log(message)
+        console.log(message);
     }
+
 }

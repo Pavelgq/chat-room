@@ -21,7 +21,7 @@ class UserStore {
 
     async getUser(userId) {
         return (await this.collection).findOne({
-           "_id": ObjectId(userId._id)
+           "_id": ObjectId(userId)
         });
     }
     //TODO: получить всех пользователей с данными ключами в массиве
