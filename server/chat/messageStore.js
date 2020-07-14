@@ -24,6 +24,7 @@ class MessageStore {
     }
 
     async save(messageData) {
+        messageData.userId =  {$ref: "users", $id: { oid: messageData.userId}, "$db" : "users"};
         return (await this.collection).insertOne(messageData);
     }
 }

@@ -7,12 +7,12 @@ export default class View {
     
   }
 
-  showMessage(pack) {
+  showMessage(pack, user) {
     let messageElem = document.createElement("DIV");
     messageElem.setAttribute('class', 'room__post post');
     
     let template = `
-    <img class="user__avatar post__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" >
+    <img class="user__avatar post__avatar" src="${this.model.getPath(user)||""}" alt="Аватар пользователя" >
     <p class="post__text">
     ${pack.text}
     </p>`;
@@ -22,8 +22,10 @@ export default class View {
   }
 
   showMessages(pack) {
+    
     pack.data.reverse().forEach(element => {
-      this.newMessage(element);
+      const user = this.model.getUser(element._id);
+      this.newMessage(element, user);
     });
   }
 
@@ -105,7 +107,6 @@ export default class View {
     </p>
 </div>`;
     container.innerHTML += template;
-//${data.avatar.path}
     const block = document.querySelector(".room__field");
     block.scrollTop = block.scrollHeight;
 

@@ -13,7 +13,7 @@ export default class Controller {
 
         this.eventHandler = this.eventHandler.bind(this);
         this.newUser = this.newUser.bind(this);
-        this.addMessage = this.loadMessage.bind(this);
+        this.addMessage = this.loadMessage().bind(this);
     }
 
     init() {
@@ -24,7 +24,7 @@ export default class Controller {
                 '_id': userInfo
             }
             this.requestOnServer("user/auth", JSON.stringify(data), this.newUser);
-            this.addMessage(6);
+           
         }
 
         
@@ -98,7 +98,7 @@ export default class Controller {
 
                 break;
 
-            case 'load-message':
+            case 'load-message': //TODO: Добавить кнопку для загрузки поздних сообщений
                 this.addMessage(10);
                 break;
             default:
@@ -152,7 +152,7 @@ export default class Controller {
         this.socket.onclose = this.log('пользователь вышел');
 
         this.view.run();
-
+        this.addMessage(6);
 
 
     }
@@ -203,7 +203,7 @@ export default class Controller {
         }
         return (limit) => {
             data.limit = limit;
-            this.requestOnServer('message/out', data, this.view.showMessages);
+            this.requestOnServer('message/out', JSON.stringify(data), this.view.showMessages);
             data.skip += data;
         }
     }
