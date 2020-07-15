@@ -43,6 +43,9 @@ function pasteIntoInput(el, text) {
         textRange.select();
     }
 }
+
+
+
 export {
     getCookie,
     isJsonString,

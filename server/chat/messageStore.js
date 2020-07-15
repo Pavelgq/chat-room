@@ -1,7 +1,6 @@
 const db = require('../database/database');
 const logger = require(`../logger`);
-
-console.log(db);    
+ 
 const setupCollection = async () => {
     const dBase = await db;
     const collection = dBase.collection(`messages`);
@@ -24,7 +23,7 @@ class MessageStore {
     }
 
     async save(messageData) {
-        messageData.userId =  {$ref: "users", $id: { oid: messageData.userId}, "$db" : "users"};
+        // messageData.userId =  {$ref: "users", $id: { oid: messageData.userId}, "$db" : "users"};
         return (await this.collection).insertOne(messageData);
     }
 }

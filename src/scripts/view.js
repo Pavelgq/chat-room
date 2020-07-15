@@ -1,3 +1,4 @@
+
 export default class View {
   constructor(model) {
     this.model = model;
@@ -24,9 +25,14 @@ export default class View {
   showMessages(pack) {
     
     pack.data.reverse().forEach(element => {
-      const user = this.model.getUser(element._id);
-      this.newMessage(element, user);
+
+      this.newMessage(element, element.userInfo);
     });
+  }
+
+  selectAction() {
+    const select = document.getElementById("modal__action");
+    select.classList.remove("visually-hidden");
   }
 
   registration(event) {
@@ -35,6 +41,9 @@ export default class View {
 
     const registration = document.getElementById("modal__registration");
     registration.classList.remove("visually-hidden");
+
+    const fileField = registration.querySelector("#upload");
+    //fileField.addEventListener("change",this.previewFile(event), false);
   }
 
   login(event) {
@@ -51,11 +60,20 @@ export default class View {
       element.classList.add("visually-hidden");
     });
     
-    const header = document.querySelector(".header__user");
-    const nameContainer = header.querySelector(".user__name");
-    //TODO: URL сервера в переменную глобальную или относительный путь если сервер будет статику раздавать
-    const avatar = header.querySelector(".user__avatar").src = this.model.getPath(this.model.user);
-    nameContainer.innerText = `${this.model.user.name} <${this.model.user.login}>`;
+    const header = document.querySelector(".header");
+
+    const template = `
+                  <section class="header__user user">
+                    <div class="user__photo">
+                        <img class="user__avatar" src="${this.model.getPath(this.model.user)}" alt="Аватар пользователя" srcset="">
+                    </div>
+                    <p class="user__info">
+                        <span class="user__name">${this.model.user.name} <${this.model.user.login}></span>
+                        <span class="user__status">online</span>
+                    </p>
+
+                </section>`
+    header.innerHTML += template;
   }
 
   newUser(data) {
@@ -110,7 +128,24 @@ export default class View {
     const block = document.querySelector(".room__field");
     block.scrollTop = block.scrollHeight;
 
-    const field = document.getElementById("massage");
+    const field = document.getElementById("message");
     field.value = '';
   }
+
+  previewFile(event) {
+    const gallery = document.querySelector('.gallery');
+    gallery.innerHTML = '';
+    const file = event.files[0];
+    let reader = new FileReader();
+    reader.readAsText(file, "UTF-8");
+    reader.onloadend = function () {
+       console.log(file.name);
+        data.push(file.name.replace('.txt','') + '\n' + reader.result);
+        
+        let img = document.createElement('img');
+        img.src = event.target.result;
+        img.alt = file.name;
+        document.getElementById('gallery').appendChild(img);
+    }
+}
 }

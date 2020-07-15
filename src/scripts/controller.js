@@ -3,7 +3,7 @@ import View from "./view.js";
 import {
     getCookie,
     isJsonString,
-    pasteIntoInput
+    pasteIntoInput,
 } from "./utils.js";
 
 export default class Controller {
@@ -19,19 +19,14 @@ export default class Controller {
     init() {
 
         const userInfo = getCookie("userId");
-        if (userInfo !== undefined) {
+        if (userInfo !== null) {
             const data = {
                 '_id': userInfo
             }
             this.requestOnServer("user/auth", JSON.stringify(data), this.newUser);
-           
+        } else {
+            this.view.selectAction();
         }
-
-        
-        var input = document.getElementById("massage");
-
-        
-        
     }
 
     connectElements(selector, event) {
@@ -53,17 +48,16 @@ export default class Controller {
                 break;
             case 'send':
                 if (event.keyCode == 13 || event.type == 'click') {
-                    var content = event.target.value; 
-                    console.log(event.target);
+                    var content = document.querySelector("#message").value; 
                     if (event.shiftKey) {
                         event.preventDefault();
                         // pasteIntoInput(event.target, '\n');
                     } else {
-                        let outgoingMessage =  event.target.value;
-                        this.socket.send(outgoingMessage);
+                        
+                        this.socket.send(content);
                         data = {
                             userId: this.model.user._id,
-                            text: outgoingMessage,
+                            text: content,
                             date: new Date()
                         }
                         type = 'message';
@@ -161,8 +155,9 @@ export default class Controller {
 
 
     newMessage(event) {
-        console.log(event);
+       
         const data = JSON.parse(event.data);
+        console.log(data);
         switch (data.type) {
             case "open":
                 if (data) {
@@ -176,7 +171,7 @@ export default class Controller {
                 break;
             case "message":
                 const userData = this.model.getUser(data.userId);
-                this.view.newMessage(data, userData);
+                this.view.newMessage(data, data.userInfo);
                 break;
             case "close":
                 const userId = data._id;
