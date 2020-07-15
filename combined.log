@@ -1462,3 +1462,10 @@
 {"message":"Server running at http://localhost:3000/","level":"info"}
 {"message":"Server running at http://localhost:3000/","level":"info"}
 {"message":"Server running at http://localhost:3000/","level":"info"}
+{"message":"Server running at http://localhost:3000/","level":"info"}
+{"name":"Мейси","login":"meisy123","pass":"123","level":"info","message":"Received data from user: "}
+{"userId":"5f0f60950d48c227084e0c5e","text":"Привет\n","date":"2020-07-15T20:01:31.382Z","level":"info","message":"Received data from user: "}
+{"userId":"5f0f60950d48c227084e0c5e","text":"Я Мейси, \nа вы\n","date":"2020-07-15T20:01:43.013Z","level":"info","message":"Received data from user: "}
+{"userId":"5f0f60950d48c227084e0c5e","text":"?","date":"2020-07-15T20:01:48.496Z","level":"info","message":"Received data from user: "}
+{"name":"Павел","login":"Pavelgq1","pass":"12411","level":"info","message":"Received data from user: "}
+{"userId":"5f0f60d50d48c227084e0c95","text":"Какие котики)","date":"2020-07-15T20:02:42.668Z","level":"info","message":"Received data from user: "}
