@@ -1,8 +1,8 @@
 const express = require(`express`);
 const userStore = require(`../chat/userStore`);
 const messageStore = require(`../chat/messageStore`);
-// const imageStore = require(`./images/store`);
-const userRouter = require(`../chat/userRoute`)(userStore);// imageStore);
+const imageStore = require(`../images/imageStore`);
+const userRouter = require(`../chat/userRoute`)(userStore, imageStore);// imageStore);
 const messageRouter = require(`../chat/messageRoute`)(messageStore);// imageStore);
 const logger = require(`../logger`);
 var bodyParser = require('body-parser');

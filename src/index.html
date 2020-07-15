@@ -17,16 +17,7 @@
                     <span class="logo__title">Chat</span>
                     <span class="logo__subtitle">Room</span>
                 </section>
-                <section class="header__user user">
-                    <div class="user__photo">
-                        <img class="user__avatar" src="/src/image/dog.jpg" alt="Аватар пользователя" srcset="">
-                    </div>
-                    <p class="user__info">
-                        <span class="user__name"></span>
-                        <span class="user__status">online</span>
-                    </p>
-
-                </section>
+                
             </header>
 
             <main class="chat">
@@ -53,7 +44,7 @@
                             <button class="room__add" type="submit">
                                 <span class="visually-hidden">Добавить вложение</span>
                             </button>
-                            <textarea class="room__message" name="massage" id="massage" data-index="send"
+                            <textarea class="room__message" name="message" id="message" data-index="send"
                                 placeholder="Введите сообщение..."></textarea>
                             <button class="room__send" data-index="send" type="button">
                                 <span class="visually-hidden">Отправить сообщение</span>
@@ -66,7 +57,7 @@
         </div>
     </div>
 
-    <section class="modal login" id="modal__action">
+    <section class="modal login visually-hidden" id="modal__action">
         <form action="" class="login__form" >
             <fieldset class="login__field">
                 <button type="button" class="login__button button" data-index="registration">Регистрация</button>
@@ -101,8 +92,11 @@
                 <input type="text" class="login__input" id="newLogin" name="login">
                 <label for="newPass" class="login__label">Пароль</label>
                 <input type="password" class="login__input" id="newPass" name="pass">
-                <input type='file' id="upload" />
-                <img class="user__avatar post__avatar" src="#" id="upload-img" alt="image" />
+                <input type="file" name="upload" id="upload" />
+                <div class="gallery">
+
+                </div>
+                
 
                 <button class="login__button button" type="submit" data-index="reg-data">Регистрация</button>
                 <p>Может уже есть аккаунт, чтобы <a class="login__button" href="#" data-index="login">войти</a>?</p>
