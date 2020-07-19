@@ -33,7 +33,10 @@ export default class Model {
     }
 
     getPath(user) {
-        return `${this.url}${user.avatar.path}?id=${user._id}`
+        if (user.avatar) {
+            return `${this.url}${user.avatar.path}?id=${user._id}`;
+        }
+        return "./src/image/dog.jpg";
     }
 
     addMessage(message) {

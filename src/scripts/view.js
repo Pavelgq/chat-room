@@ -68,7 +68,7 @@ export default class View {
                     </div>
                     <p class="user__info">
                         <span class="user__name">${this.model.user.name} <${this.model.user.login}></span>
-                        <span class="user__status">online</span>
+                        <button type="button" class="user__exit" id="exit" data-index = "exit">Выйти</button>
                     </p>
 
                 </section>`
@@ -148,8 +148,14 @@ export default class View {
     }
   }
 
-  authError() {
-    const field = document.querySelector('.login__error');
+  authError(type) {
+    let form;
+    if (type == 'reg') {
+      form = document.querySelector("#form__registration");
+    } else {
+      form = document.querySelector("#form__auth");
+    }
+    const field = form.querySelector('.login__error');
     field.classList.add('login__line-required');
 
     setTimeout(() => {

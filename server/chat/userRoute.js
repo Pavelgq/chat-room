@@ -1,4 +1,6 @@
-const {Router} = require(`express`);
+const {
+  Router
+} = require(`express`);
 const async = require(`../utils/async`);
 const dataRenderer = require(`../utils/data-renderer`);
 const logger = require(`../logger`);
@@ -30,7 +32,7 @@ const upload = multer({
 
 chatRouter.post(`/auth`, async (async (req, res) => {
   const id = req.query.id;
-  console.log(id);
+
   if (id != undefined) {
     // const data = await req.body;
     // 
@@ -38,22 +40,23 @@ chatRouter.post(`/auth`, async (async (req, res) => {
     res.send(await result);
   } else {
     const data = await req.body;
-    console.log(data);
+
     const result = await chatRouter.userStore.getUserByLogin(data.login);
-    console.log(result);
+
     if ((result != null) && (result.pass === data.pass)) {
       res.send(await result);
-    }
-    else {
-      res.send({id: "not user"});
+    } else {
+      res.send({
+        id: "auth"
+      });
     }
   }
-  
+
 }));
 
 
 chatRouter.post(``, upload.single(`upload`), async (async (req, res) => {
-  const data = await req.body;
+  let data = await req.body;
   logger.info(`Received data from user: `, data);
 
   const avatar = req.file;
@@ -73,15 +76,22 @@ chatRouter.post(``, upload.single(`upload`), async (async (req, res) => {
 
     data.avatar = avatarInfo;
   }
+  const result = await chatRouter.userStore.getUserByLogin(data.login);
+  if (!result) {
+    await chatRouter.userStore.save(data);
+  } else {
+    data = {
+      id: "reg"
+    };
+  }
 
-  await chatRouter.userStore.save(data);
   dataRenderer.renderDataSuccess(req, res, data);
 }));
 
 chatRouter.get(`/:login/avatar`, async (async (req, res) => {
   const userLogin = req.params.login;
   const userId = req.query.id;
-console.log(userId, "здесь");
+  console.log(userId, "здесь");
   const user = await chatRouter.userStore.getUser(userId);
 
   if (!user) {

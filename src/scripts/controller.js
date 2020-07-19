@@ -104,6 +104,12 @@ export default class Controller {
             case 'load-message': //TODO: Добавить кнопку для загрузки поздних сообщений
                 this.addMessage(10);
                 break;
+            case 'exit': 
+            document.cookie = 'userId' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                if (document.cookie == "null") {
+                    location.reload();
+                }
+                
             default:
                 break;
         }
@@ -147,7 +153,7 @@ export default class Controller {
     newUser(data) {
         
         console.log(data)
-        if (data.id != 'not user') {
+        if ((data.id != 'auth') && (data.id != 'reg')) {
             this.model.newUser(data);
             this.saveCookie();
             this.socket = new WebSocket(`ws://localhost:8081`);
@@ -159,9 +165,11 @@ export default class Controller {
     
             this.view.run();
             this.addMessage(6);
+
+            this.connectElements('#exit', 'click');
         }else {
             //TODO: Неверное введен логин или пароль
-            this.view.authError();
+            this.view.authError(data.id);
             
         }
         
