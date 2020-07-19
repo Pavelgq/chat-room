@@ -17,7 +17,7 @@
                     <span class="logo__title">Chat</span>
                     <span class="logo__subtitle">Room</span>
                 </section>
-                
+
             </header>
 
             <main class="chat">
@@ -32,7 +32,7 @@
                             <span class="user__status">online</span>
                         </p> -->
                     </div>
-                    
+
                 </section>
                 <section class="chat__room room">
                     <h2 class="visually-hidden">Сообщения в чате</h2>
@@ -58,7 +58,7 @@
     </div>
 
     <section class="modal login visually-hidden" id="modal__action">
-        <form action="" class="login__form" >
+        <form action="" class="login__form">
             <fieldset class="login__field">
                 <button type="button" class="login__button button" data-index="registration">Регистрация</button>
                 <button type="button" class="login__button button" data-index="login">Вход</button>
@@ -69,16 +69,21 @@
         <form class="login__form" id="form__auth">
             <fieldset class="login__field">
                 <legend class="login__title">Вход</legend>
-                <label for="" class="login__label">Логин</label>
-                <input type="text" class="login__input">
-                <label for="" class="login__label">Пароль</label>
-                <input type="password" class="login__input">
-
+                <div class="login__line">
+                    <label for="" class="login__label">Логин</label>
+                    <input type="text" class="login__input">
+                    <span class="login__hint">Обязательно для заполнения</span>
+                </div>
+                <div class="login__line">
+                    <label for="" class="login__label">Пароль</label>
+                    <input type="password" class="login__input">
+                    <span class="login__hint">Обязательно для заполнения</span>
+                </div>
 
                 <button class="login__button button" type="submit" data-index="login-data">Войти</button>
 
 
-                <p>Или все таки <a  href="#" class="login__button" data-index="registration">зарегистрироваться</a>?</p>
+                <p>Или все таки <a href="#" class="login__button" data-index="registration">зарегистрироваться</a>?</p>
             </fieldset>
         </form>
     </section>
@@ -86,17 +91,27 @@
         <form class="login__form" id="form__registration">
             <fieldset class="login__field">
                 <legend class="login__title">Регистрация</legend>
-                <label for="newName" class="login__label">Никнейм</label>
-                <input type="text" class="login__input" id="newName" name="name">
-                <label for="newLogin" class="login__label">Логин</label>
-                <input type="text" class="login__input" id="newLogin" name="login">
-                <label for="newPass" class="login__label">Пароль</label>
-                <input type="password" class="login__input" id="newPass" name="pass">
+
+                <div class="login__line">
+                    <label for="newName" class="login__label">Никнейм:</label>
+                    <input type="text" class="login__input" id="newName" name="name">
+                    <span class="login__hint">Обязательно для заполнения</span>
+                </div>
+                <div class="login__line">
+                    <label for="newLogin" class="login__label">Логин:</label>
+                    <input type="text" class="login__input" id="newLogin" name="login">
+                    <span class="login__hint">Обязательно для заполнения</span>
+                </div>
+                <div class="login__line">
+                    <label for="newPass" class="login__label">Пароль:</label>
+                    <input type="password" class="login__input" id="newPass" name="pass">
+                    <span class="login__hint">Обязательно для заполнения</span>
+                </div>
                 <input type="file" name="upload" id="upload" />
                 <div class="gallery">
 
                 </div>
-                
+
 
                 <button class="login__button button" type="submit" data-index="reg-data">Регистрация</button>
                 <p>Может уже есть аккаунт, чтобы <a class="login__button" href="#" data-index="login">войти</a>?</p>

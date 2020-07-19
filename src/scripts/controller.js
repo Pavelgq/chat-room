@@ -39,6 +39,7 @@ export default class Controller {
         let data;
         let type;
         let req;
+        let form;
         switch (event.target.dataset.index) {
             case 'registration':
                 this.view.registration(event);
@@ -48,12 +49,12 @@ export default class Controller {
                 break;
             case 'send':
                 if (event.keyCode == 13 || event.type == 'click') {
-                    var content = document.querySelector("#message").value; 
+                    var content = document.querySelector("#message").value;
                     if (event.shiftKey) {
                         event.preventDefault();
                         // pasteIntoInput(event.target, '\n');
                     } else {
-                        
+
                         this.socket.send(content);
                         data = {
                             userId: this.model.user._id,
@@ -64,32 +65,39 @@ export default class Controller {
                         req = this.requestOnServer(type, JSON.stringify(data), this.log);
                         return false;
                     }
-                }
-                else {
+                } else {
                     this.cursorPosition = event.target.selectionStart;
                 }
 
                 break;
             case 'reg-data':
                 event.preventDefault();
-               
-                const uploadFile = document.getElementById('upload'); 
-                const formData = new FormData();
-                formData.append('avatar', uploadFile.files[0]);
-                data = {
-                    avatar: formData,
-                    name: document.getElementById('newName').value,
-                    login: document.getElementById('newLogin').value,
-                    pass: document.getElementById('newPass').value
-                    
+                form = document.querySelector("#form__registration");
+                if (this.preValidation(form)) {
+                    const uploadFile = document.getElementById('upload');
+                    const formData = new FormData();
+                    formData.append('avatar', uploadFile.files[0]);
+                    data = {
+                        avatar: formData,
+                        name: document.getElementById('newName').value,
+                        login: document.getElementById('newLogin').value,
+                        pass: document.getElementById('newPass').value
+
+                    }
+                    console.log(data);
+                    type = 'user';
+                    req = this.requestOnServer(type, new FormData(form__registration), this.newUser);
                 }
-                console.log(data);
-                type = 'user';
-                req = this.requestOnServer(type, new FormData(form__registration), this.newUser);
+
+
 
                 break;
             case 'login-data':
-
+                event.preventDefault();
+                form = document.querySelector("#form__auth");
+                if (this.preValidation(form)) {
+                    
+                }
                 break;
 
             case 'load-message': //TODO: Добавить кнопку для загрузки поздних сообщений
@@ -114,7 +122,7 @@ export default class Controller {
             body: data,
             redirect: 'follow'
         };
-        
+
         let url = `http://localhost:3000/api/${type}`;
         let response = await fetch(url, requestOptions)
             .then(response => response.text())
@@ -139,7 +147,7 @@ export default class Controller {
         this.model.newUser(data);
         this.saveCookie();
         this.socket = new WebSocket(`ws://localhost:8081`);
-             
+
         this.socket.onopen = this.log('новый пользователь');
         // обработчик входящих сообщений
         this.socket.onmessage = this.newMessage.bind(this);
@@ -151,11 +159,7 @@ export default class Controller {
 
     }
 
-
-
-
     newMessage(event) {
-       
         const data = JSON.parse(event.data);
         console.log(data);
         switch (data.type) {
@@ -207,4 +211,20 @@ export default class Controller {
         console.log(message);
     }
 
+    preValidation(form) {
+       
+        const fields = form.querySelectorAll("input");
+        let valid = true;
+        fields.forEach(element => {
+            if (element.value == '' && element.type != 'file') {
+                element.classList.add('noValid');
+                element.nextElementSibling.classList.add('login__line-required');
+                valid = false;
+            }else {
+                element.classList.remove('noValid');
+            }
+        })
+        
+        return valid;
+    }
 }
