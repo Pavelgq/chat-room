@@ -1,17 +1,16 @@
-
 export default class View {
   constructor(model) {
     this.model = model;
 
     this.showMessages = this.showMessages.bind(this);
 
-    
+
   }
 
   showMessage(pack, user) {
     let messageElem = document.createElement("DIV");
     messageElem.setAttribute('class', 'room__post post');
-    
+
     let template = `
     <img class="user__avatar post__avatar" src="${this.model.getPath(user)||""}" alt="Аватар пользователя" >
     <p class="post__text">
@@ -23,7 +22,7 @@ export default class View {
   }
 
   showMessages(pack) {
-    
+
     pack.data.reverse().forEach(element => {
 
       this.newMessage(element, element.userInfo);
@@ -59,7 +58,7 @@ export default class View {
     modal.forEach(element => {
       element.classList.add("visually-hidden");
     });
-    
+
     const header = document.querySelector(".header");
 
     const template = `
@@ -88,7 +87,7 @@ export default class View {
       </p>
     </div>`;
 
-    container.innerHTML+=template;
+    container.innerHTML += template;
   }
 
   renderUsers() {
@@ -106,15 +105,15 @@ export default class View {
     </div>`;
       container.innerHTML += template;
     })
-    
+
 
   }
 
   newMessage(data, user) {
     const container = document.querySelector(".room__field");
-    const flag = (data.userId === (this.model.user._id||0));
-    const myMessage = flag?"post__my":"";
-    
+    const flag = (data.userId === (this.model.user._id || 0));
+    const myMessage = flag ? "post__my" : "";
+
     const template = `<div class="room__post post ${myMessage}">
     <!-- <div class="user__photo"> -->
     <img class="user__avatar post__avatar" src="${this.model.getPath(user)}" alt="Аватар пользователя"
@@ -139,13 +138,22 @@ export default class View {
     let reader = new FileReader();
     reader.readAsText(file, "UTF-8");
     reader.onloadend = function () {
-       console.log(file.name);
-        data.push(file.name.replace('.txt','') + '\n' + reader.result);
-        
-        let img = document.createElement('img');
-        img.src = event.target.result;
-        img.alt = file.name;
-        document.getElementById('gallery').appendChild(img);
+      console.log(file.name);
+      data.push(file.name.replace('.txt', '') + '\n' + reader.result);
+
+      let img = document.createElement('img');
+      img.src = event.target.result;
+      img.alt = file.name;
+      document.getElementById('gallery').appendChild(img);
     }
-}
+  }
+
+  authError() {
+    const field = document.querySelector('.login__error');
+    field.classList.add('login__line-required');
+
+    setTimeout(() => {
+      field.classList.remove('login__line-required');
+    }, 5000);
+  }
 }

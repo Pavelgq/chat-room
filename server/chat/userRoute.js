@@ -29,10 +29,26 @@ const upload = multer({
 });
 
 chatRouter.post(`/auth`, async (async (req, res) => {
-  const data = await req.body;
-  console.log(data);
-  const result = await chatRouter.userStore.getUser(data._id);
-  res.send(await result);
+  const id = req.query.id;
+  console.log(id);
+  if (id != undefined) {
+    // const data = await req.body;
+    // 
+    const result = await chatRouter.userStore.getUser(id);
+    res.send(await result);
+  } else {
+    const data = await req.body;
+    console.log(data);
+    const result = await chatRouter.userStore.getUserByLogin(data.login);
+    console.log(result);
+    if ((result != null) && (result.pass === data.pass)) {
+      res.send(await result);
+    }
+    else {
+      res.send({id: "not user"});
+    }
+  }
+  
 }));
 
 

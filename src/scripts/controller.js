@@ -20,10 +20,7 @@ export default class Controller {
 
         const userInfo = getCookie("userId");
         if (userInfo !== null) {
-            const data = {
-                '_id': userInfo
-            }
-            this.requestOnServer("user/auth", JSON.stringify(data), this.newUser);
+            this.requestOnServer(`user/auth?id=${userInfo}`, null, this.newUser);
         } else {
             this.view.selectAction();
         }
@@ -79,12 +76,11 @@ export default class Controller {
                     formData.append('avatar', uploadFile.files[0]);
                     data = {
                         avatar: formData,
-                        name: document.getElementById('newName').value,
-                        login: document.getElementById('newLogin').value,
-                        pass: document.getElementById('newPass').value
+                        name: form.newName.value,
+                        login: form.newLogin.value,
+                        pass: form.newPass.value
 
                     }
-                    console.log(data);
                     type = 'user';
                     req = this.requestOnServer(type, new FormData(form__registration), this.newUser);
                 }
@@ -96,7 +92,12 @@ export default class Controller {
                 event.preventDefault();
                 form = document.querySelector("#form__auth");
                 if (this.preValidation(form)) {
-                    
+                    data = {
+                        login: form.loginAuth.value,
+                        pass: form.passAuth.value
+                    };
+                    type = 'user/auth';
+                    req = this.requestOnServer(type, JSON.stringify(data), this.newUser);
                 }
                 break;
 
@@ -144,17 +145,26 @@ export default class Controller {
     }
 
     newUser(data) {
-        this.model.newUser(data);
-        this.saveCookie();
-        this.socket = new WebSocket(`ws://localhost:8081`);
-
-        this.socket.onopen = this.log('новый пользователь');
-        // обработчик входящих сообщений
-        this.socket.onmessage = this.newMessage.bind(this);
-        this.socket.onclose = this.log('пользователь вышел');
-
-        this.view.run();
-        this.addMessage(6);
+        
+        console.log(data)
+        if (data.id != 'not user') {
+            this.model.newUser(data);
+            this.saveCookie();
+            this.socket = new WebSocket(`ws://localhost:8081`);
+    
+            this.socket.onopen = this.log('новый пользователь');
+            // обработчик входящих сообщений
+            this.socket.onmessage = this.newMessage.bind(this);
+            this.socket.onclose = this.log('пользователь вышел');
+    
+            this.view.run();
+            this.addMessage(6);
+        }else {
+            //TODO: Неверное введен логин или пароль
+            this.view.authError();
+            
+        }
+        
 
 
     }
@@ -212,7 +222,6 @@ export default class Controller {
     }
 
     preValidation(form) {
-       
         const fields = form.querySelectorAll("input");
         let valid = true;
         fields.forEach(element => {

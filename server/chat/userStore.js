@@ -24,6 +24,12 @@ class UserStore {
            "_id": ObjectId(userId)
         });
     }
+
+    async getUserByLogin(login) {
+        return (await this.collection).findOne({
+           "login": login
+        });
+    }
     //TODO: получить всех пользователей с данными ключами в массиве
 
     async getArrayUsers(connectUsers) {

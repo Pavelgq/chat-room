@@ -69,14 +69,15 @@
         <form class="login__form" id="form__auth">
             <fieldset class="login__field">
                 <legend class="login__title">Вход</legend>
+                <div class="login__error">Неверный логин или пароль</div>
                 <div class="login__line">
                     <label for="" class="login__label">Логин</label>
-                    <input type="text" class="login__input">
+                    <input type="text" class="login__input" id="loginAuth">
                     <span class="login__hint">Обязательно для заполнения</span>
                 </div>
                 <div class="login__line">
                     <label for="" class="login__label">Пароль</label>
-                    <input type="password" class="login__input">
+                    <input type="password" class="login__input" id="passAuth">
                     <span class="login__hint">Обязательно для заполнения</span>
                 </div>
 
