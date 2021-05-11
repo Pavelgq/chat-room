@@ -46,7 +46,7 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.20",
     "multer": "^1.4.2",
